@@ -11,9 +11,9 @@ class Workout {
   @JsonKey(required: true)
   final String name;
 
-  List<Exercise> exercises = [];
+  List<Exercise> exercises;
 
-  Workout({required this.name});
+  Workout({required this.name, this.exercises = const []});
 
   factory Workout.fromJson(Map<String, dynamic> json) =>
       _$WorkoutFromJson(json);

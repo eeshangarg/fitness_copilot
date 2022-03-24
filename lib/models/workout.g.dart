@@ -13,9 +13,11 @@ Workout _$WorkoutFromJson(Map<String, dynamic> json) {
   );
   return Workout(
     name: json['name'] as String,
-  )..exercises = (json['exercises'] as List<dynamic>)
-      .map((e) => Exercise.fromJson(e as Map<String, dynamic>))
-      .toList();
+    exercises: (json['exercises'] as List<dynamic>?)
+            ?.map((e) => Exercise.fromJson(e as Map<String, dynamic>))
+            .toList() ??
+        const [],
+  );
 }
 
 Map<String, dynamic> _$WorkoutToJson(Workout instance) => <String, dynamic>{
