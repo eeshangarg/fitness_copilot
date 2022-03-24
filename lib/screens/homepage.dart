@@ -1,3 +1,5 @@
+import 'package:fitness_copilot/components/workout_card.dart';
+import 'package:fitness_copilot/sample_data.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,25 +28,6 @@ class _HomePageState extends State<HomePage> {
     fontWeight: FontWeight.bold,
   );
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      kDashboardLabel,
-      style: optionStyle,
-    ),
-    Text(
-      kWorkoutsLabel,
-      style: optionStyle,
-    ),
-    Text(
-      kHistoryLabel,
-      style: optionStyle,
-    ),
-    Text(
-      kMeasureLabel,
-      style: optionStyle,
-    ),
-  ];
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -53,6 +36,27 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _widgetOptions = <Widget>[
+      const Text(
+        kDashboardLabel,
+        style: optionStyle,
+      ),
+      ListView(
+        padding: const EdgeInsets.all(8),
+        children: [
+          WorkoutCard(workout: shouldersWorkout),
+        ],
+      ),
+      const Text(
+        kHistoryLabel,
+        style: optionStyle,
+      ),
+      const Text(
+        kMeasureLabel,
+        style: optionStyle,
+      ),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Text(_tabNames[_selectedIndex]),
