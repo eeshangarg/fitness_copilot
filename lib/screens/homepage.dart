@@ -1,5 +1,6 @@
-import 'package:fitness_copilot/components/workout_card.dart';
+import 'package:fitness_copilot/models/workout.dart';
 import 'package:fitness_copilot/sample_data.dart';
+import 'package:fitness_copilot/screens/workouts.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,6 +15,8 @@ class _HomePageState extends State<HomePage> {
   static const String kWorkoutsLabel = 'Workouts';
   static const String kHistoryLabel = 'History';
   static const String kMeasureLabel = 'Measure';
+
+  final List<Workout> _workouts = sampleWorkouts;
 
   int _selectedIndex = 0;
   final List<String> _tabNames = [
@@ -41,12 +44,7 @@ class _HomePageState extends State<HomePage> {
         kDashboardLabel,
         style: optionStyle,
       ),
-      ListView(
-        padding: const EdgeInsets.all(8),
-        children: [
-          WorkoutCard(workout: shouldersWorkout),
-        ],
-      ),
+      Workouts(workouts: _workouts),
       const Text(
         kHistoryLabel,
         style: optionStyle,
