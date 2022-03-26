@@ -17,10 +17,11 @@ Workout _$WorkoutFromJson(Map<String, dynamic> json) {
             ?.map((e) => Exercise.fromJson(e as Map<String, dynamic>))
             .toList() ??
         const [],
-  );
+  )..lastPerformed = json['last_performed'] as int?;
 }
 
 Map<String, dynamic> _$WorkoutToJson(Workout instance) => <String, dynamic>{
       'name': instance.name,
       'exercises': instance.exercises.map((e) => e.toJson()).toList(),
+      'last_performed': instance.lastPerformed,
     };

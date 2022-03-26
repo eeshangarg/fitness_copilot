@@ -13,6 +13,9 @@ class Workout {
 
   List<Exercise> exercises;
 
+  // Unix timestamp in UTC
+  int? lastPerformed;
+
   Workout({required this.name, this.exercises = const []});
 
   factory Workout.fromJson(Map<String, dynamic> json) =>
