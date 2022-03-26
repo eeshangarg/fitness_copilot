@@ -17,6 +17,23 @@ class WorkoutCard extends StatelessWidget {
     return exerciseNames.join(', ');
   }
 
+  String _getLastPerformedLabel() {
+    if (workout.lastPerformed == null) {
+      return 'Never';
+    }
+
+    int timestamp = workout.lastPerformed!;
+    DateTime lastPerformedDate = DateTime.fromMillisecondsSinceEpoch(
+      timestamp,
+      isUtc: true,
+    );
+    int daysAgo = DateTime.now().difference(lastPerformedDate).inDays;
+    if (daysAgo == 1) {
+      return 'Yesterday';
+    }
+    return '$daysAgo days ago';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -50,7 +67,7 @@ class WorkoutCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 6.0),
                 Text(
-                  '2 days ago',
+                  _getLastPerformedLabel(),
                   style: Theme.of(context).textTheme.caption?.copyWith(
                         fontSize: 14.0,
                       ),
