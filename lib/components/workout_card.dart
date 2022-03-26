@@ -1,3 +1,4 @@
+import 'package:fitness_copilot/components/workout_last_performed_indicator.dart';
 import 'package:fitness_copilot/models/workout.dart';
 import 'package:flutter/material.dart';
 
@@ -15,23 +16,6 @@ class WorkoutCard extends StatelessWidget {
       exerciseNames.add(exercise.name);
     }
     return exerciseNames.join(', ');
-  }
-
-  String _getLastPerformedLabel() {
-    if (workout.lastPerformed == null) {
-      return 'Never';
-    }
-
-    int timestamp = workout.lastPerformed!;
-    DateTime lastPerformedDate = DateTime.fromMillisecondsSinceEpoch(
-      timestamp,
-      isUtc: true,
-    );
-    int daysAgo = DateTime.now().difference(lastPerformedDate).inDays;
-    if (daysAgo == 1) {
-      return 'Yesterday';
-    }
-    return '$daysAgo days ago';
   }
 
   @override
@@ -58,22 +42,7 @@ class WorkoutCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8.0),
-            Row(
-              children: [
-                Icon(
-                  Icons.access_time_filled,
-                  size: 14.0,
-                  color: Theme.of(context).textTheme.caption?.color,
-                ),
-                const SizedBox(width: 6.0),
-                Text(
-                  _getLastPerformedLabel(),
-                  style: Theme.of(context).textTheme.caption?.copyWith(
-                        fontSize: 14.0,
-                      ),
-                )
-              ],
-            ),
+            WorkoutLastPerformedIndicator(lastPerformed: workout.lastPerformed),
           ],
         ),
       ),
