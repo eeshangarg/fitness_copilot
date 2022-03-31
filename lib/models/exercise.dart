@@ -11,9 +11,12 @@ class Exercise {
   @JsonKey(required: true)
   final String name;
 
+  @JsonKey(required: true)
+  final String bodyPart;
+
   List<ExerciseSet> sets = [];
 
-  Exercise({required this.name});
+  Exercise({required this.name, required this.bodyPart});
 
   factory Exercise.fromJson(Map<String, dynamic> json) =>
       _$ExerciseFromJson(json);
