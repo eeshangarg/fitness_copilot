@@ -1,4 +1,5 @@
 import 'package:fitness_copilot/components/workout_last_performed_indicator.dart';
+import 'package:fitness_copilot/components/workout_popup_menu_button.dart';
 import 'package:fitness_copilot/models/workout.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,9 @@ class WorkoutDetailsDialog extends StatelessWidget {
     List<ListTile> tiles = [];
     for (final exercise in workout.exercises) {
       ListTile tile = ListTile(
-        visualDensity: const VisualDensity(vertical: -4),
+        visualDensity: const VisualDensity(
+          vertical: VisualDensity.minimumDensity,
+        ),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
         title: Text('${exercise.sets.length} x ${exercise.name}'),
@@ -27,19 +30,26 @@ class WorkoutDetailsDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> children = [
-      WorkoutLastPerformedIndicator(
-        lastPerformed: workout.lastPerformed,
-      ),
-    ];
-    children.addAll(_getExerciseTiles());
-
     return AlertDialog(
       scrollable: true,
       insetPadding: const EdgeInsets.all(16.0),
-      title: Text(workout.name),
+      title: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(workout.name),
+              const WorkoutPopupMenuButton(),
+            ],
+          ),
+          const SizedBox(height: 4.0),
+          WorkoutLastPerformedIndicator(
+            lastPerformed: workout.lastPerformed,
+          ),
+        ],
+      ),
       content: Column(
-        children: children,
+        children: _getExerciseTiles(),
         mainAxisSize: MainAxisSize.min,
       ),
       actions: [
