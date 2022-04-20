@@ -54,7 +54,9 @@ class WorkoutDetailsDialog extends StatelessWidget {
       ),
       actions: [
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            // TODO: Add the ability to start a given workout.
+          },
           child: const Text('Start workout'),
         ),
         TextButton(

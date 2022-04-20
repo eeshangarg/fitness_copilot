@@ -1,6 +1,7 @@
 import 'package:fitness_copilot/components/workout_details_dialog.dart';
 import 'package:fitness_copilot/components/workout_exercises_summary.dart';
 import 'package:fitness_copilot/components/workout_last_performed_indicator.dart';
+import 'package:fitness_copilot/components/workout_popup_menu_button.dart';
 import 'package:fitness_copilot/models/workout.dart';
 import 'package:flutter/material.dart';
 
@@ -32,9 +33,15 @@ class WorkoutCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
-                workout.name,
-                style: Theme.of(context).textTheme.titleLarge,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    workout.name,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const WorkoutPopupMenuButton(),
+                ],
               ),
               const SizedBox(height: 8.0),
               WorkoutExercisesSummary(
