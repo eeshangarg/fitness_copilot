@@ -1,4 +1,8 @@
+import 'dart:collection';
+
 import 'package:fitness_copilot/models/exercise.dart';
+import 'package:fitness_copilot/models/sample_data.dart';
+import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'workout.g.dart';
@@ -22,4 +26,15 @@ class Workout {
       _$WorkoutFromJson(json);
 
   Map<String, dynamic> toJson() => _$WorkoutToJson(this);
+}
+
+class WorkoutChangeNotifier extends ChangeNotifier {
+  final List<Workout> _workouts = sampleWorkouts;
+
+  UnmodifiableListView<Workout> get workouts => UnmodifiableListView(_workouts);
+
+  void removeWorkout(Workout workout) {
+    _workouts.remove(workout);
+    notifyListeners();
+  }
 }
