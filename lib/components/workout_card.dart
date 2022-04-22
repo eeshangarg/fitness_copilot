@@ -40,7 +40,7 @@ class WorkoutCard extends StatelessWidget {
                     workout.name,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  const WorkoutPopupMenuButton(),
+                  WorkoutPopupMenuButton(workout: workout),
                 ],
               ),
               const SizedBox(height: 8.0),

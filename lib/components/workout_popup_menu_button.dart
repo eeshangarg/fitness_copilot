@@ -1,5 +1,7 @@
 import 'package:fitness_copilot/components/workout_popup_menu_tile.dart';
+import 'package:fitness_copilot/models/workout.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 enum WorkoutDetailsOption {
   edit,
@@ -9,7 +11,10 @@ enum WorkoutDetailsOption {
 class WorkoutPopupMenuButton extends StatelessWidget {
   const WorkoutPopupMenuButton({
     Key? key,
+    required this.workout,
   }) : super(key: key);
+
+  final Workout workout;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +41,7 @@ class WorkoutPopupMenuButton extends StatelessWidget {
         if (option == WorkoutDetailsOption.edit) {
           // TODO: Implement the ability to edit a workout.
         } else if (option == WorkoutDetailsOption.delete) {
-          // TODO: Implement the ability to delete a workout.
+          context.read<WorkoutChangeNotifier>().removeWorkout(workout);
         }
       },
     );

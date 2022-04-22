@@ -1,5 +1,4 @@
 import 'package:fitness_copilot/components/workout_last_performed_indicator.dart';
-import 'package:fitness_copilot/components/workout_popup_menu_button.dart';
 import 'package:fitness_copilot/models/workout.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +38,13 @@ class WorkoutDetailsDialog extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(workout.name),
-              const WorkoutPopupMenuButton(),
+              IconButton(
+                onPressed: () {
+                  // TODO: Add the ability to edit a workout.
+                },
+                icon: const Icon(Icons.edit),
+                iconSize: 21.0,
+              )
             ],
           ),
           const SizedBox(height: 4.0),
