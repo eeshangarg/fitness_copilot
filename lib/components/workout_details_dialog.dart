@@ -1,5 +1,6 @@
 import 'package:fitness_copilot/components/workout_last_performed_indicator.dart';
 import 'package:fitness_copilot/models/workout.dart';
+import 'package:fitness_copilot/screens/workout_started.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutDetailsDialog extends StatelessWidget {
@@ -60,7 +61,15 @@ class WorkoutDetailsDialog extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () {
-            // TODO: Add the ability to start a given workout.
+            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return WorkoutStarted(workout: workout);
+                },
+              ),
+            );
           },
           child: const Text('Start workout'),
         ),

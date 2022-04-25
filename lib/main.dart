@@ -1,8 +1,14 @@
+import 'package:fitness_copilot/components/workout_timer.dart';
 import 'package:fitness_copilot/screens/homepage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    TimerServiceProvider(
+      service: TimerService(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
