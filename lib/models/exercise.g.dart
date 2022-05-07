@@ -14,9 +14,11 @@ Exercise _$ExerciseFromJson(Map<String, dynamic> json) {
   return Exercise(
     name: json['name'] as String,
     bodyPart: json['body_part'] as String,
-  )..sets = (json['sets'] as List<dynamic>)
-      .map((e) => ExerciseSet.fromJson(e as Map<String, dynamic>))
-      .toList();
+    sets: (json['sets'] as List<dynamic>?)
+            ?.map((e) => ExerciseSet.fromJson(e as Map<String, dynamic>))
+            .toList() ??
+        const [],
+  );
 }
 
 Map<String, dynamic> _$ExerciseToJson(Exercise instance) => <String, dynamic>{

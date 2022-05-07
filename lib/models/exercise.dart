@@ -16,7 +16,11 @@ class Exercise {
 
   List<ExerciseSet> sets = [];
 
-  Exercise({required this.name, required this.bodyPart});
+  Exercise({
+    required this.name,
+    required this.bodyPart,
+    this.sets = const [],
+  });
 
   factory Exercise.fromJson(Map<String, dynamic> json) =>
       _$ExerciseFromJson(json);
