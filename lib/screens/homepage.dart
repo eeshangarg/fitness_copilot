@@ -1,4 +1,4 @@
-import 'package:fitness_copilot/models/workout.dart';
+import 'package:fitness_copilot/models/notifiers/workout_list_change_notifier.dart';
 import 'package:fitness_copilot/screens/workouts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
         style: optionStyle,
       ),
       ChangeNotifierProvider(
-        create: (context) => WorkoutChangeNotifier(),
+        create: (context) => WorkoutListChangeNotifier(),
         child: const Workouts(),
       ),
       const Text(
