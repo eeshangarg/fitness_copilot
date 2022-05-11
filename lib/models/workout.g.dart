@@ -16,7 +16,7 @@ Workout _$WorkoutFromJson(Map<String, dynamic> json) {
     exercises: (json['exercises'] as List<dynamic>?)
             ?.map((e) => Exercise.fromJson(e as Map<String, dynamic>))
             .toList() ??
-        const [],
+        [],
   )..lastPerformed = json['last_performed'] as int?;
 }
 

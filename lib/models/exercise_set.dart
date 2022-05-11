@@ -4,7 +4,10 @@ part 'exercise_set.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ExerciseSet {
+  @JsonKey(defaultValue: 0)
   int numberOfReps = 0;
+
+  @JsonKey(defaultValue: 0.0)
   double weight = 0.0; // in lbs
 
   ExerciseSet({required this.numberOfReps, required this.weight});

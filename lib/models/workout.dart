@@ -11,6 +11,7 @@ class Workout {
   @JsonKey(required: true)
   final String name;
 
+  @JsonKey(defaultValue: [])
   List<Exercise> exercises;
 
   // Unix timestamp in UTC

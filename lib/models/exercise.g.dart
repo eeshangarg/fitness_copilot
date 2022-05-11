@@ -17,7 +17,7 @@ Exercise _$ExerciseFromJson(Map<String, dynamic> json) {
     sets: (json['sets'] as List<dynamic>?)
             ?.map((e) => ExerciseSet.fromJson(e as Map<String, dynamic>))
             .toList() ??
-        const [],
+        [],
   );
 }
 

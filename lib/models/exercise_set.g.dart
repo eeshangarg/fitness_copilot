@@ -7,8 +7,8 @@ part of 'exercise_set.dart';
 // **************************************************************************
 
 ExerciseSet _$ExerciseSetFromJson(Map<String, dynamic> json) => ExerciseSet(
-      numberOfReps: json['number_of_reps'] as int,
-      weight: (json['weight'] as num).toDouble(),
+      numberOfReps: json['number_of_reps'] as int? ?? 0,
+      weight: (json['weight'] as num?)?.toDouble() ?? 0.0,
     );
 
 Map<String, dynamic> _$ExerciseSetToJson(ExerciseSet instance) =>

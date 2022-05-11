@@ -14,6 +14,7 @@ class Exercise {
   @JsonKey(required: true)
   final String bodyPart;
 
+  @JsonKey(defaultValue: [])
   List<ExerciseSet> sets = [];
 
   Exercise({
