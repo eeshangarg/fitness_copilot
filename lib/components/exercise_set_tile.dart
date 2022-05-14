@@ -46,7 +46,7 @@ class ExerciseSetTile extends StatelessWidget {
           ),
           RichText(
             text: TextSpan(
-              text: '${set.numberOfRepsPerformed} ',
+              text: '${set.repGoal} ',
               style: titleMediumBold,
               children: [
                 TextSpan(

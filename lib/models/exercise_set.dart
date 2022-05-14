@@ -5,12 +5,19 @@ part 'exercise_set.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ExerciseSet {
   @JsonKey(defaultValue: 0)
-  int numberOfRepsPerformed = 0;
+  int repGoal;
 
   @JsonKey(defaultValue: 0.0)
   double weight = 0.0; // in lbs
 
-  ExerciseSet({required this.numberOfRepsPerformed, required this.weight});
+  @JsonKey(defaultValue: 0)
+  int numberOfRepsPerformed = 0;
+
+  ExerciseSet({
+    required this.repGoal,
+    required this.weight,
+    this.numberOfRepsPerformed = 0,
+  });
 
   factory ExerciseSet.fromJson(Map<String, dynamic> json) =>
       _$ExerciseSetFromJson(json);
