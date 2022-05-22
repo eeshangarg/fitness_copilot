@@ -1,5 +1,5 @@
 import 'package:fitness_copilot/components/workout_card.dart';
-import 'package:fitness_copilot/models/notifiers/workout_list_change_notifier.dart';
+import 'package:fitness_copilot/models/workout_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,15 +8,14 @@ class Workouts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WorkoutListChangeNotifier notifier =
-        context.watch<WorkoutListChangeNotifier>();
+    WorkoutList workoutList = context.watch<WorkoutList>();
 
     return ListView.builder(
       padding: const EdgeInsets.all(8),
-      itemCount: notifier.workouts.length,
+      itemCount: workoutList.workouts.length,
       itemBuilder: (context, index) {
         return WorkoutCard(
-          workout: notifier.workouts[index],
+          workout: workoutList.workouts[index],
         );
       },
     );
