@@ -1,35 +1,38 @@
 import 'package:fitness_copilot/components/workout_last_performed_indicator.dart';
+import 'package:fitness_copilot/models/exercise.dart';
 import 'package:fitness_copilot/models/workout.dart';
 import 'package:fitness_copilot/screens/workout_started.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class WorkoutDetailsDialog extends StatelessWidget {
-  const WorkoutDetailsDialog({
-    Key? key,
-    required this.workout,
-  }) : super(key: key);
+  const WorkoutDetailsDialog({Key? key}) : super(key: key);
 
-  final Workout workout;
-
-  List<ListTile> _getExerciseTiles() {
+  List<ListTile> _getExerciseTiles(List<Exercise> exercises) {
     List<ListTile> tiles = [];
-    for (final exercise in workout.exercises) {
+
+    for (final exercise in exercises) {
       ListTile tile = ListTile(
         visualDensity: const VisualDensity(
           vertical: VisualDensity.minimumDensity,
         ),
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 0.0,
+          vertical: 0.0,
+        ),
         title: Text('${exercise.sets.length} x ${exercise.name}'),
         subtitle: Text(exercise.bodyPart),
       );
       tiles.add(tile);
     }
+
     return tiles;
   }
 
   @override
   Widget build(BuildContext context) {
+    Workout workout = context.watch<Workout>();
+
     return AlertDialog(
       scrollable: true,
       insetPadding: const EdgeInsets.all(16.0),
@@ -49,13 +52,11 @@ class WorkoutDetailsDialog extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4.0),
-          WorkoutLastPerformedIndicator(
-            lastPerformed: workout.lastPerformed,
-          ),
+          const WorkoutLastPerformedIndicator(),
         ],
       ),
       content: Column(
-        children: _getExerciseTiles(),
+        children: _getExerciseTiles(workout.exercises),
         mainAxisSize: MainAxisSize.min,
       ),
       actions: [
@@ -66,7 +67,10 @@ class WorkoutDetailsDialog extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return WorkoutStarted(workout: workout);
+                  return ChangeNotifierProvider.value(
+                    value: workout,
+                    child: const WorkoutStarted(),
+                  );
                 },
               ),
             );

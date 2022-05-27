@@ -14,8 +14,9 @@ class Workouts extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       itemCount: workoutList.workouts.length,
       itemBuilder: (context, index) {
-        return WorkoutCard(
-          workout: workoutList.workouts[index],
+        return ChangeNotifierProvider.value(
+          value: workoutList.workouts[index],
+          child: const WorkoutCard(),
         );
       },
     );

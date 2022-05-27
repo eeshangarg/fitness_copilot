@@ -1,18 +1,14 @@
 import 'package:fitness_copilot/models/exercise.dart';
+import 'package:fitness_copilot/models/workout.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class WorkoutExercisesSummary extends StatelessWidget {
-  const WorkoutExercisesSummary({
-    Key? key,
-    required List<Exercise> exercises,
-  })  : _exercises = exercises,
-        super(key: key);
+  const WorkoutExercisesSummary({Key? key}) : super(key: key);
 
-  final List<Exercise> _exercises;
-
-  String _getWorkoutSummary() {
+  String _getWorkoutSummary(List<Exercise> exercises) {
     List<String> exerciseNames = [];
-    for (final exercise in _exercises) {
+    for (final exercise in exercises) {
       exerciseNames.add(exercise.name);
     }
     return exerciseNames.join(', ');
@@ -20,9 +16,11 @@ class WorkoutExercisesSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Workout workout = context.watch<Workout>();
+
     return Flexible(
       child: Text(
-        _getWorkoutSummary(),
+        _getWorkoutSummary(workout.exercises),
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               overflow: TextOverflow.ellipsis,
             ),

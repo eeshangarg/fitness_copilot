@@ -2,17 +2,15 @@ import 'package:fitness_copilot/components/exercise_expansion_panel.dart';
 import 'package:fitness_copilot/components/workout_timer.dart';
 import 'package:fitness_copilot/models/workout.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class WorkoutStarted extends StatelessWidget {
-  const WorkoutStarted({
-    Key? key,
-    required this.workout,
-  }) : super(key: key);
-
-  final Workout workout;
+  const WorkoutStarted({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Workout workout = context.watch<Workout>();
+
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -23,10 +21,10 @@ class WorkoutStarted extends StatelessWidget {
           ],
         ),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ExerciseExpansionPanel(exercises: workout.exercises),
+          padding: EdgeInsets.all(8.0),
+          child: ExerciseExpansionPanel(),
         ),
       ),
     );

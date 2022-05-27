@@ -10,15 +10,12 @@ enum WorkoutDetailsOption {
 }
 
 class WorkoutPopupMenuButton extends StatelessWidget {
-  const WorkoutPopupMenuButton({
-    Key? key,
-    required this.workout,
-  }) : super(key: key);
-
-  final Workout workout;
+  const WorkoutPopupMenuButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Workout workout = context.watch<Workout>();
+
     return PopupMenuButton<WorkoutDetailsOption>(
       icon: const Icon(Icons.more_horiz_rounded),
       itemBuilder: (BuildContext context) =>

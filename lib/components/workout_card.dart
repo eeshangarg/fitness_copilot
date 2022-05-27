@@ -4,24 +4,23 @@ import 'package:fitness_copilot/components/workout_last_performed_indicator.dart
 import 'package:fitness_copilot/components/workout_popup_menu_button.dart';
 import 'package:fitness_copilot/models/workout.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class WorkoutCard extends StatelessWidget {
-  final Workout workout;
-
-  const WorkoutCard({
-    Key? key,
-    required this.workout,
-  }) : super(key: key);
+  const WorkoutCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Workout workout = context.watch<Workout>();
+
     return GestureDetector(
       onTap: () {
         showDialog(
           context: context,
           builder: (BuildContext context) {
-            return WorkoutDetailsDialog(
-              workout: workout,
+            return ChangeNotifierProvider.value(
+              value: workout,
+              child: const WorkoutDetailsDialog(),
             );
           },
         );
@@ -40,17 +39,13 @@ class WorkoutCard extends StatelessWidget {
                     workout.name,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  WorkoutPopupMenuButton(workout: workout),
+                  const WorkoutPopupMenuButton(),
                 ],
               ),
               const SizedBox(height: 8.0),
-              WorkoutExercisesSummary(
-                exercises: workout.exercises,
-              ),
+              const WorkoutExercisesSummary(),
               const SizedBox(height: 8.0),
-              WorkoutLastPerformedIndicator(
-                lastPerformed: workout.lastPerformed,
-              ),
+              const WorkoutLastPerformedIndicator(),
             ],
           ),
         ),

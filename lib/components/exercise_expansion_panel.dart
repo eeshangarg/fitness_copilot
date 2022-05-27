@@ -1,15 +1,11 @@
 import 'package:fitness_copilot/components/exercise_set_tile.dart';
 import 'package:fitness_copilot/models/exercise.dart';
+import 'package:fitness_copilot/models/workout.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ExerciseExpansionPanel extends StatelessWidget {
-  const ExerciseExpansionPanel({
-    Key? key,
-    required List<Exercise> exercises,
-  })  : _exercises = exercises,
-        super(key: key);
-
-  final List<Exercise> _exercises;
+  const ExerciseExpansionPanel({Key? key}) : super(key: key);
 
   ExpansionPanelRadio _buildExpansionPanelRadio(Exercise exercise, int value) {
     return ExpansionPanelRadio(
@@ -44,10 +40,10 @@ class ExerciseExpansionPanel extends StatelessWidget {
     );
   }
 
-  List<ExpansionPanelRadio> _getChildren() {
+  List<ExpansionPanelRadio> _getChildren(List<Exercise> exercises) {
     List<ExpansionPanelRadio> children = [];
-    for (var i = 0; i < _exercises.length; i++) {
-      children.add(_buildExpansionPanelRadio(_exercises[i], i + 1));
+    for (var i = 0; i < exercises.length; i++) {
+      children.add(_buildExpansionPanelRadio(exercises[i], i + 1));
     }
 
     return children;
@@ -57,7 +53,7 @@ class ExerciseExpansionPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return ExpansionPanelList.radio(
       initialOpenPanelValue: 1,
-      children: _getChildren(),
+      children: _getChildren(context.watch<Workout>().exercises),
     );
   }
 }

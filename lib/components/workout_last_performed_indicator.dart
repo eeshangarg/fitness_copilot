@@ -1,20 +1,17 @@
+import 'package:fitness_copilot/models/workout.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class WorkoutLastPerformedIndicator extends StatelessWidget {
-  const WorkoutLastPerformedIndicator({
-    Key? key,
-    required this.lastPerformed,
-  }) : super(key: key);
+  const WorkoutLastPerformedIndicator({Key? key}) : super(key: key);
 
-  final int? lastPerformed;
-
-  String _getLastPerformedLabel() {
+  String _getLastPerformedLabel(int? lastPerformed) {
     if (lastPerformed == null) {
       return 'Never';
     }
 
     DateTime lastPerformedDate = DateTime.fromMillisecondsSinceEpoch(
-      lastPerformed!,
+      lastPerformed,
       isUtc: true,
     );
     int daysAgo = DateTime.now().difference(lastPerformedDate).inDays;
@@ -35,7 +32,7 @@ class WorkoutLastPerformedIndicator extends StatelessWidget {
         ),
         const SizedBox(width: 6.0),
         Text(
-          _getLastPerformedLabel(),
+          _getLastPerformedLabel(context.watch<Workout>().lastPerformed),
           style: Theme.of(context).textTheme.caption?.copyWith(
                 fontSize: 14.0,
               ),
