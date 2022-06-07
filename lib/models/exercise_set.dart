@@ -11,12 +11,12 @@ class ExerciseSet {
   double weight = 0.0; // in lbs
 
   @JsonKey(defaultValue: 0)
-  int numberOfRepsPerformed = 0;
+  int repsPerformed = 0;
 
   ExerciseSet({
     required this.repGoal,
     required this.weight,
-    this.numberOfRepsPerformed = 0,
+    this.repsPerformed = 0,
   });
 
   factory ExerciseSet.fromJson(Map<String, dynamic> json) =>
