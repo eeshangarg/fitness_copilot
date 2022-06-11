@@ -1,15 +1,11 @@
+import 'package:fitness_copilot/components/edit_set_bottom_sheet.dart';
+import 'package:fitness_copilot/models/exercise.dart';
 import 'package:fitness_copilot/models/exercise_set.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ExerciseSetTile extends StatelessWidget {
-  const ExerciseSetTile({
-    Key? key,
-    required this.set,
-    required this.setNumber,
-  }) : super(key: key);
-
-  final ExerciseSet set;
-  final int setNumber;
+  const ExerciseSetTile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +14,26 @@ class ExerciseSetTile extends StatelessWidget {
       fontWeight: FontWeight.bold,
     );
 
+    ExerciseSet set = context.watch<ExerciseSet>();
+    Exercise exercise = context.watch<Exercise>();
+    int setNumber = exercise.sets.indexOf(set) + 1;
+
     return ListTile(
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          builder: (BuildContext context) {
+            return MultiProvider(
+              providers: [
+                ChangeNotifierProvider.value(value: exercise),
+                ChangeNotifierProvider.value(value: set),
+              ],
+              child: const EditSetBottomSheet(),
+            );
+          },
+        );
+      },
       title: Text(
         'Set $setNumber',
         style: titleMediumBold,
@@ -46,7 +61,7 @@ class ExerciseSetTile extends StatelessWidget {
           ),
           RichText(
             text: TextSpan(
-              text: '${set.repGoal} ',
+              text: '${set.repsPerformed} / ${set.repGoal} ',
               style: titleMediumBold,
               children: [
                 TextSpan(

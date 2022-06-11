@@ -1,4 +1,5 @@
 import 'package:fitness_copilot/models/exercise_set.dart';
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'exercise.g.dart';
@@ -7,7 +8,7 @@ part 'exercise.g.dart';
   explicitToJson: true,
   fieldRename: FieldRename.snake,
 )
-class Exercise {
+class Exercise extends ChangeNotifier {
   @JsonKey(required: true)
   final String name;
 

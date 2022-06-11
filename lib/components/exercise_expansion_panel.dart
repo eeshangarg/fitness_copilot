@@ -28,9 +28,12 @@ class ExerciseExpansionPanel extends StatelessWidget {
         shrinkWrap: true,
         itemCount: exercise.sets.length,
         itemBuilder: (BuildContext context, int index) {
-          return ExerciseSetTile(
-            set: exercise.sets[index],
-            setNumber: index + 1,
+          return MultiProvider(
+            providers: [
+              ChangeNotifierProvider.value(value: exercise),
+              ChangeNotifierProvider.value(value: exercise.sets[index])
+            ],
+            child: const ExerciseSetTile(),
           );
         },
         separatorBuilder: (BuildContext context, int index) {

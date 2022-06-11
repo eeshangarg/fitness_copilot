@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'exercise_set.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class ExerciseSet {
+class ExerciseSet extends ChangeNotifier {
   @JsonKey(defaultValue: 0)
   int repGoal;
 
@@ -18,6 +19,17 @@ class ExerciseSet {
     required this.weight,
     this.repsPerformed = 0,
   });
+
+  void update({
+    required int repGoal,
+    required double weight,
+    required int repsPerformed,
+  }) {
+    this.repGoal = repGoal;
+    this.weight = weight;
+    this.repsPerformed = repsPerformed;
+    notifyListeners();
+  }
 
   factory ExerciseSet.fromJson(Map<String, dynamic> json) =>
       _$ExerciseSetFromJson(json);
