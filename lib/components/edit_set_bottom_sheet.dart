@@ -106,7 +106,6 @@ class _EditSetBottomSheetState extends State<EditSetBottomSheet> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           textStyle: Theme.of(context).textTheme.titleMedium,
-                          primary: Theme.of(context).errorColor,
                         ),
                         child: const Text('Cancel'),
                         onPressed: () => Navigator.pop(context),

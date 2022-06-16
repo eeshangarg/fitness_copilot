@@ -56,8 +56,8 @@ class WorkoutDetailsDialog extends StatelessWidget {
         ],
       ),
       content: Column(
-        children: _getExerciseTiles(workout.exercises),
         mainAxisSize: MainAxisSize.min,
+        children: _getExerciseTiles(workout.exercises),
       ),
       actions: [
         TextButton(
