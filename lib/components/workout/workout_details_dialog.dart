@@ -1,6 +1,6 @@
-import 'package:fitness_copilot/components/workout_last_performed_indicator.dart';
-import 'package:fitness_copilot/models/exercise.dart';
-import 'package:fitness_copilot/models/workout.dart';
+import 'package:fitness_copilot/components/workout/workout_last_performed_indicator.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
+import 'package:fitness_copilot/models/workout/workout.dart';
 import 'package:fitness_copilot/screens/workout_started.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

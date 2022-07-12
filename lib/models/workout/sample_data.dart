@@ -1,6 +1,6 @@
-import 'package:fitness_copilot/models/exercise.dart';
-import 'package:fitness_copilot/models/exercise_set.dart';
-import 'package:fitness_copilot/models/workout.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise_set.dart';
+import 'package:fitness_copilot/models/workout/workout.dart';
 
 Exercise facePulls = Exercise(
   name: 'Face Pull (Cable)',

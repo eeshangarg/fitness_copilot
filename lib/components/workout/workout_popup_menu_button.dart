@@ -1,6 +1,6 @@
-import 'package:fitness_copilot/components/workout_popup_menu_tile.dart';
-import 'package:fitness_copilot/models/workout.dart';
-import 'package:fitness_copilot/models/workout_list.dart';
+import 'package:fitness_copilot/components/workout/workout_popup_menu_tile.dart';
+import 'package:fitness_copilot/models/workout/workout.dart';
+import 'package:fitness_copilot/models/workout/workout_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

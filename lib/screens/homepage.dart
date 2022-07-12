@@ -1,4 +1,4 @@
-import 'package:fitness_copilot/models/workout_list.dart';
+import 'package:fitness_copilot/models/workout/workout_list.dart';
 import 'package:fitness_copilot/screens/workouts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -1,5 +1,5 @@
-import 'package:fitness_copilot/components/workout_card.dart';
-import 'package:fitness_copilot/models/workout_list.dart';
+import 'package:fitness_copilot/components/workout/workout_card.dart';
+import 'package:fitness_copilot/models/workout/workout_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

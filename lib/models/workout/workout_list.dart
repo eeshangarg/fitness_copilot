@@ -1,7 +1,7 @@
 import 'dart:collection';
 
-import 'package:fitness_copilot/models/sample_data.dart';
-import 'package:fitness_copilot/models/workout.dart';
+import 'package:fitness_copilot/models/workout/sample_data.dart';
+import 'package:fitness_copilot/models/workout/workout.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutList extends ChangeNotifier {

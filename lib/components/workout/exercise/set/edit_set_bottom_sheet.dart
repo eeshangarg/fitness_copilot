@@ -1,7 +1,7 @@
-import 'package:fitness_copilot/components/rep_text_field.dart';
-import 'package:fitness_copilot/components/weight_text_field.dart';
-import 'package:fitness_copilot/models/exercise.dart';
-import 'package:fitness_copilot/models/exercise_set.dart';
+import 'package:fitness_copilot/components/workout/exercise/set/rep_text_field.dart';
+import 'package:fitness_copilot/components/workout/exercise/set/weight_text_field.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise_set.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';

@@ -1,8 +1,8 @@
-import 'package:fitness_copilot/components/workout_details_dialog.dart';
-import 'package:fitness_copilot/components/workout_exercises_summary.dart';
-import 'package:fitness_copilot/components/workout_last_performed_indicator.dart';
-import 'package:fitness_copilot/components/workout_popup_menu_button.dart';
-import 'package:fitness_copilot/models/workout.dart';
+import 'package:fitness_copilot/components/workout/workout_details_dialog.dart';
+import 'package:fitness_copilot/components/workout/workout_exercises_summary.dart';
+import 'package:fitness_copilot/components/workout/workout_last_performed_indicator.dart';
+import 'package:fitness_copilot/components/workout/workout_popup_menu_button.dart';
+import 'package:fitness_copilot/models/workout/workout.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

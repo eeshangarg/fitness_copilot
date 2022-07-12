@@ -1,6 +1,6 @@
-import 'package:fitness_copilot/components/edit_set_bottom_sheet.dart';
-import 'package:fitness_copilot/models/exercise.dart';
-import 'package:fitness_copilot/models/exercise_set.dart';
+import 'package:fitness_copilot/components/workout/exercise/set/edit_set_bottom_sheet.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise_set.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
