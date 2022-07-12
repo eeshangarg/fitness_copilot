@@ -1,5 +1,5 @@
-import 'package:fitness_copilot/components/workout/workout_timer.dart';
 import 'package:fitness_copilot/screens/homepage.dart';
+import 'package:fitness_copilot/shared/providers/timer_service.dart';
 import 'package:flutter/material.dart';
 
 void main() {
