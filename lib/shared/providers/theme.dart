@@ -81,11 +81,18 @@ class ThemeProvider extends InheritedWidget {
         borderRadius: BorderRadius.circular(8),
       );
 
-  CardTheme cardTheme() {
+  CardTheme cardTheme(ColorScheme colors) {
     return CardTheme(
-      elevation: 0,
-      shape: shapeMedium,
+      elevation: 0.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+        side: BorderSide(
+          width: 0.4,
+          color: colors.outline,
+        ),
+      ),
       clipBehavior: Clip.antiAlias,
+      color: colors.surface,
     );
   }
 
@@ -153,7 +160,7 @@ class ThemeProvider extends InheritedWidget {
       pageTransitionsTheme: pageTransitionsTheme,
       colorScheme: colorScheme,
       appBarTheme: appBarTheme(colorScheme),
-      cardTheme: cardTheme(),
+      cardTheme: cardTheme(colorScheme),
       listTileTheme: listTileTheme(colorScheme),
       bottomAppBarTheme: bottomAppBarTheme(colorScheme),
       bottomNavigationBarTheme: bottomNavigationBarTheme(colorScheme),
@@ -171,7 +178,7 @@ class ThemeProvider extends InheritedWidget {
       pageTransitionsTheme: pageTransitionsTheme,
       colorScheme: colorScheme,
       appBarTheme: appBarTheme(colorScheme),
-      cardTheme: cardTheme(),
+      cardTheme: cardTheme(colorScheme),
       listTileTheme: listTileTheme(colorScheme),
       bottomAppBarTheme: bottomAppBarTheme(colorScheme),
       bottomNavigationBarTheme: bottomNavigationBarTheme(colorScheme),
