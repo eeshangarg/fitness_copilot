@@ -1,4 +1,6 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:fitness_copilot/screens/homepage.dart';
+import 'package:fitness_copilot/shared/providers/theme.dart';
 import 'package:fitness_copilot/shared/providers/timer_service.dart';
 import 'package:flutter/material.dart';
 
@@ -11,15 +13,47 @@ void main() {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final settings = ValueNotifier(
+    ThemeSettings(
+      sourceColor: Color(0xff6750A4),
+      themeMode: ThemeMode.system,
+    ),
+  );
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fitness Copilot',
-      theme: ThemeData(useMaterial3: true),
-      home: const HomePage(),
-    );
+    return DynamicColorBuilder(builder: (lightDynamic, darkDynamic) {
+      return ThemeProvider(
+        lightDynamic: lightDynamic,
+        darkDynamic: darkDynamic,
+        settings: settings,
+        child: NotificationListener<ThemeSettingChange>(
+          onNotification: (notification) {
+            settings.value = notification.settings;
+            return true;
+          },
+          child: ValueListenableBuilder(
+            valueListenable: settings,
+            builder: (context, value, _) {
+              final theme = ThemeProvider.of(context);
+
+              return MaterialApp(
+                title: 'Fitness Copilot',
+                theme: theme.light(settings.value.sourceColor),
+                home: const HomePage(),
+              );
+            },
+          ),
+        ),
+      );
+    });
   }
 }
