@@ -1,5 +1,6 @@
 import 'package:fitness_copilot/components/workout/workout_card.dart';
 import 'package:fitness_copilot/models/workout/workout_list.dart';
+import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,7 @@ class Workouts extends StatelessWidget {
     WorkoutList workoutList = context.watch<WorkoutList>();
 
     return ListView.builder(
-      padding: const EdgeInsets.all(8),
+      padding: kScreenPadding,
       itemCount: workoutList.workouts.length,
       itemBuilder: (context, index) {
         return ChangeNotifierProvider.value(

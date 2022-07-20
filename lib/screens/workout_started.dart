@@ -1,6 +1,7 @@
 import 'package:fitness_copilot/components/workout/exercise/exercise_expansion_panel.dart';
 import 'package:fitness_copilot/components/workout/workout_timer.dart';
 import 'package:fitness_copilot/models/workout/workout.dart';
+import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +24,7 @@ class WorkoutStarted extends StatelessWidget {
       ),
       body: const SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: kScreenPadding,
           child: ExerciseExpansionPanel(),
         ),
       ),

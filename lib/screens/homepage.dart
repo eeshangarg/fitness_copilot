@@ -1,5 +1,6 @@
 import 'package:fitness_copilot/models/workout/workout_list.dart';
 import 'package:fitness_copilot/screens/workouts.dart';
+import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,11 +25,6 @@ class _HomePageState extends State<HomePage> {
     kMeasureLabel,
   ];
 
-  static const TextStyle optionStyle = TextStyle(
-    fontSize: 30,
-    fontWeight: FontWeight.bold,
-  );
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -40,7 +36,7 @@ class _HomePageState extends State<HomePage> {
     final List<Widget> widgetOptions = <Widget>[
       const Text(
         kDashboardLabel,
-        style: optionStyle,
+        style: kNotImplementedPlaceholderTextStyle,
       ),
       ChangeNotifierProvider(
         create: (context) => WorkoutList(),
@@ -48,11 +44,11 @@ class _HomePageState extends State<HomePage> {
       ),
       const Text(
         kHistoryLabel,
-        style: optionStyle,
+        style: kNotImplementedPlaceholderTextStyle,
       ),
       const Text(
         kMeasureLabel,
-        style: optionStyle,
+        style: kNotImplementedPlaceholderTextStyle,
       ),
     ];
 

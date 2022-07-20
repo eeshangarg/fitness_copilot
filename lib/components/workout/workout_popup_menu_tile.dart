@@ -1,3 +1,4 @@
+import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutPopupMenuTile extends StatelessWidget {
@@ -15,13 +16,8 @@ class WorkoutPopupMenuTile extends StatelessWidget {
     return ListTile(
       title: title,
       leading: icon,
-      visualDensity: const VisualDensity(
-        vertical: VisualDensity.minimumDensity,
-        horizontal: VisualDensity.minimumDensity,
-      ),
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 0.0,
-      ),
+      visualDensity: kMinimumVisualDensity,
+      contentPadding: kZeroHorizontalSymmetricPadding,
       horizontalTitleGap: 2.0,
     );
   }

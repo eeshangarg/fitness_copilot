@@ -33,9 +33,7 @@ class WorkoutLastPerformedIndicator extends StatelessWidget {
         const SizedBox(width: 6.0),
         Text(
           _getLastPerformedLabel(context.watch<Workout>().lastPerformed),
-          style: Theme.of(context).textTheme.caption?.copyWith(
-                fontSize: 14.0,
-              ),
+          style: Theme.of(context).textTheme.caption?.copyWith(fontSize: 14.0),
         )
       ],
     );

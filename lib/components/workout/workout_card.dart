@@ -3,6 +3,7 @@ import 'package:fitness_copilot/components/workout/workout_exercises_summary.dar
 import 'package:fitness_copilot/components/workout/workout_last_performed_indicator.dart';
 import 'package:fitness_copilot/components/workout/workout_popup_menu_button.dart';
 import 'package:fitness_copilot/models/workout/workout.dart';
+import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,7 +28,7 @@ class WorkoutCard extends StatelessWidget {
       },
       child: Card(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: kComponentPadding,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,

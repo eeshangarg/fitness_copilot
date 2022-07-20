@@ -2,6 +2,7 @@ import 'package:fitness_copilot/components/workout/exercise/set/rep_text_field.d
 import 'package:fitness_copilot/components/workout/exercise/set/weight_text_field.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise_set.dart';
+import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -44,7 +45,7 @@ class _EditSetBottomSheetState extends State<EditSetBottomSheet> {
         child: Form(
           key: _formKey,
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: kComponentPadding,
             child: Column(
               children: [
                 Text(

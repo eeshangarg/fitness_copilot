@@ -2,6 +2,7 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'package:fitness_copilot/screens/homepage.dart';
 import 'package:fitness_copilot/shared/providers/theme.dart';
 import 'package:fitness_copilot/shared/providers/timer_service.dart';
+import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final settings = ValueNotifier(
     ThemeSettings(
-      sourceColor: Color(0xff6750A4),
+      sourceColor: kMaterialThemeSourceColor,
       themeMode: ThemeMode.system,
     ),
   );

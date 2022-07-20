@@ -2,6 +2,7 @@ import 'package:fitness_copilot/components/workout/workout_last_performed_indica
 import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
 import 'package:fitness_copilot/models/workout/workout.dart';
 import 'package:fitness_copilot/screens/workout_started.dart';
+import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,13 +14,8 @@ class WorkoutDetailsDialog extends StatelessWidget {
 
     for (final exercise in exercises) {
       ListTile tile = ListTile(
-        visualDensity: const VisualDensity(
-          vertical: VisualDensity.minimumDensity,
-        ),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 0.0,
-          vertical: 0.0,
-        ),
+        visualDensity: kMinimumVerticalVisualDensity,
+        contentPadding: kZeroSymmetricPadding,
         title: Text('${exercise.sets.length} x ${exercise.name}'),
         subtitle: Text(exercise.bodyPart),
       );
@@ -35,7 +31,7 @@ class WorkoutDetailsDialog extends StatelessWidget {
 
     return AlertDialog(
       scrollable: true,
-      insetPadding: const EdgeInsets.all(16.0),
+      insetPadding: kComponentPadding,
       title: Column(
         children: [
           Row(
