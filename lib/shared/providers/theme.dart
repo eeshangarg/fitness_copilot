@@ -97,6 +97,17 @@ class ThemeProvider extends InheritedWidget {
     );
   }
 
+  BottomSheetThemeData bottomSheetTheme(ColorScheme colors) {
+    return const BottomSheetThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(28.0),
+          topRight: Radius.circular(28.0),
+        ),
+      ),
+    );
+  }
+
   ListTileThemeData listTileTheme(ColorScheme colors) {
     return ListTileThemeData(
       shape: shapeMedium,
@@ -165,6 +176,7 @@ class ThemeProvider extends InheritedWidget {
       listTileTheme: listTileTheme(colorScheme),
       bottomAppBarTheme: bottomAppBarTheme(colorScheme),
       bottomNavigationBarTheme: bottomNavigationBarTheme(colorScheme),
+      bottomSheetTheme: bottomSheetTheme(colorScheme),
       navigationRailTheme: navigationRailTheme(colorScheme),
       tabBarTheme: tabBarTheme(colorScheme),
       drawerTheme: drawerTheme(colorScheme),
@@ -183,6 +195,7 @@ class ThemeProvider extends InheritedWidget {
       listTileTheme: listTileTheme(colorScheme),
       bottomAppBarTheme: bottomAppBarTheme(colorScheme),
       bottomNavigationBarTheme: bottomNavigationBarTheme(colorScheme),
+      bottomSheetTheme: bottomSheetTheme(colorScheme),
       navigationRailTheme: navigationRailTheme(colorScheme),
       tabBarTheme: tabBarTheme(colorScheme),
       drawerTheme: drawerTheme(colorScheme),
