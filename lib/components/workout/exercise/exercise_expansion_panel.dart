@@ -15,9 +15,7 @@ class ExerciseExpansionPanel extends StatelessWidget {
         return ListTile(
           title: Text(
             exercise.name,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18.0,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   overflow: TextOverflow.ellipsis,
                 ),
           ),

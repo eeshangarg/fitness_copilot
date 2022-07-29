@@ -28,12 +28,12 @@ class WorkoutLastPerformedIndicator extends StatelessWidget {
         Icon(
           Icons.access_time_filled,
           size: 14.0,
-          color: Theme.of(context).textTheme.caption?.color,
+          color: Theme.of(context).textTheme.labelMedium?.color,
         ),
         const SizedBox(width: 6.0),
         Text(
           _getLastPerformedLabel(context.watch<Workout>().lastPerformed),
-          style: Theme.of(context).textTheme.caption?.copyWith(fontSize: 14.0),
+          style: Theme.of(context).textTheme.labelMedium,
         )
       ],
     );

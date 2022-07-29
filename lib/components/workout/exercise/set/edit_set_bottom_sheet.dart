@@ -55,7 +55,7 @@ class _EditSetBottomSheetState extends State<EditSetBottomSheet> {
                 const SizedBox(height: 4.0),
                 Text(
                   exercise.name,
-                  style: Theme.of(context).textTheme.subtitle1,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(height: 16.0),
                 WeightTextField(
@@ -84,9 +84,6 @@ class _EditSetBottomSheetState extends State<EditSetBottomSheet> {
                   children: [
                     Expanded(
                       child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          textStyle: Theme.of(context).textTheme.titleMedium,
-                        ),
                         child: const Text('Done'),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
@@ -105,9 +102,6 @@ class _EditSetBottomSheetState extends State<EditSetBottomSheet> {
                     const SizedBox(width: 16.0),
                     Expanded(
                       child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          textStyle: Theme.of(context).textTheme.titleMedium,
-                        ),
                         child: const Text('Cancel'),
                         onPressed: () => Navigator.pop(context),
                       ),

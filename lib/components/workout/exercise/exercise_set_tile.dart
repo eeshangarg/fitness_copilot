@@ -10,9 +10,6 @@ class ExerciseSetTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle? titleMedium = Theme.of(context).textTheme.titleMedium;
-    TextStyle? titleMediumBold = titleMedium?.copyWith(
-      fontWeight: FontWeight.bold,
-    );
 
     ExerciseSet set = context.watch<ExerciseSet>();
     Exercise exercise = context.watch<Exercise>();
@@ -34,10 +31,7 @@ class ExerciseSetTile extends StatelessWidget {
           },
         );
       },
-      title: Text(
-        'Set $setNumber',
-        style: titleMediumBold,
-      ),
+      title: Text('Set $setNumber'),
       // TODO: Figure out a way to calculate the previous set stats
       subtitle: const Text('Previous: 25 lbs x 15'),
       trailing: Row(
@@ -46,7 +40,7 @@ class ExerciseSetTile extends StatelessWidget {
           RichText(
             text: TextSpan(
               text: '${set.weight} ',
-              style: titleMediumBold,
+              style: titleMedium,
               children: [
                 TextSpan(
                   text: 'lb ',
@@ -62,7 +56,7 @@ class ExerciseSetTile extends StatelessWidget {
           RichText(
             text: TextSpan(
               text: '${set.repsPerformed} / ${set.repGoal} ',
-              style: titleMediumBold,
+              style: titleMedium,
               children: [
                 TextSpan(
                   text: 'reps',
