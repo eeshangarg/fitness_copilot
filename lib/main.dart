@@ -1,11 +1,18 @@
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:fitness_copilot/firebase_options.dart';
 import 'package:fitness_copilot/screens/homepage.dart';
 import 'package:fitness_copilot/shared/providers/theme.dart';
 import 'package:fitness_copilot/shared/providers/timer_service.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(
     TimerServiceProvider(
       service: TimerService(),

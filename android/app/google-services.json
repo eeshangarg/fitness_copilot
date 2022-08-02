@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1001231000295",
+    "project_id": "eeshangarg-fitness-copilot",
+    "storage_bucket": "eeshangarg-fitness-copilot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001231000295:android:0f6a05bb25f2b0f4693842",
+        "android_client_info": {
+          "package_name": "com.eeshangarg.fitness_copilot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001231000295-fl9rjok8evcekcpvrv1m0tm5uahl011p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkzEc0PIa8M1ijmGnVuvVuYFhFCiyKI6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001231000295-fl9rjok8evcekcpvrv1m0tm5uahl011p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1001231000295-vve8pvnnftpo5kau0p1knj6i922dl277.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.eeshangarg.fitnessCopilot"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
