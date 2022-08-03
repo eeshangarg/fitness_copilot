@@ -1,5 +1,5 @@
 import 'package:fitness_copilot/components/workout/workout_card.dart';
-import 'package:fitness_copilot/models/workout/workout_list.dart';
+import 'package:fitness_copilot/models/workout/workout_collection.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +9,7 @@ class Workouts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WorkoutList workoutList = context.watch<WorkoutList>();
+    WorkoutCollection workoutList = context.watch<WorkoutCollection>();
 
     return ListView.builder(
       padding: kScreenPadding,

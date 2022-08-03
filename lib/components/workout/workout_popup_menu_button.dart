@@ -1,6 +1,6 @@
 import 'package:fitness_copilot/components/workout/workout_popup_menu_tile.dart';
 import 'package:fitness_copilot/models/workout/workout.dart';
-import 'package:fitness_copilot/models/workout/workout_list.dart';
+import 'package:fitness_copilot/models/workout/workout_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +39,7 @@ class WorkoutPopupMenuButton extends StatelessWidget {
         if (option == WorkoutDetailsOption.edit) {
           // TODO: Implement the ability to edit a workout.
         } else if (option == WorkoutDetailsOption.delete) {
-          context.read<WorkoutList>().removeWorkout(workout);
+          context.read<WorkoutCollection>().removeWorkout(workout);
         }
       },
     );
