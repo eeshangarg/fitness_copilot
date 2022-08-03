@@ -1,4 +1,4 @@
-import 'package:fitness_copilot/models/workout/workout_collection.dart';
+import 'package:fitness_copilot/models/workout/workout_template_collection.dart';
 import 'package:fitness_copilot/screens/workouts.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         style: kNotImplementedPlaceholderTextStyle,
       ),
       ChangeNotifierProvider(
-        create: (context) => WorkoutCollection(),
+        create: (context) => WorkoutTemplateCollection(),
         child: const Workouts(),
       ),
       const Text(
