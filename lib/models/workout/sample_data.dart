@@ -1,6 +1,6 @@
 import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise_set.dart';
-import 'package:fitness_copilot/models/workout/workout.dart';
+import 'package:fitness_copilot/models/workout/workout_template.dart';
 
 Exercise facePulls = Exercise(
   name: 'Face Pull (Cable)',
@@ -210,7 +210,7 @@ Exercise backExtension = Exercise(
   ],
 );
 
-Workout shouldersWorkout = Workout(
+WorkoutTemplate shouldersWorkout = WorkoutTemplate(
   name: 'Shoulders & Chest',
   exercises: [
     facePulls,
@@ -222,7 +222,7 @@ Workout shouldersWorkout = Workout(
     standingCalfRaise,
   ],
 );
-Workout armsWorkout = Workout(
+WorkoutTemplate armsWorkout = WorkoutTemplate(
   name: 'Arms',
   exercises: [
     tricepPushdown,
@@ -232,7 +232,7 @@ Workout armsWorkout = Workout(
     closeGripBenchPress,
   ],
 );
-Workout lowerBodyWorkout = Workout(
+WorkoutTemplate lowerBodyWorkout = WorkoutTemplate(
   name: 'Lower Body',
   exercises: [
     lyingLegCurl,
@@ -244,7 +244,7 @@ Workout lowerBodyWorkout = Workout(
     standingCalfRaise,
   ],
 );
-Workout backWorkout = Workout(
+WorkoutTemplate backWorkout = WorkoutTemplate(
   name: 'Back',
   exercises: [
     oneArmRow,
@@ -256,7 +256,7 @@ Workout backWorkout = Workout(
   ],
 );
 
-List<Workout> sampleWorkouts = [
+List<WorkoutTemplate> sampleWorkoutTemplates = [
   shouldersWorkout,
   armsWorkout,
   lowerBodyWorkout,

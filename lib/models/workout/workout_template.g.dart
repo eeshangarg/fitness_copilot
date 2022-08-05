@@ -1,17 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'workout.dart';
+part of 'workout_template.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Workout _$WorkoutFromJson(Map<String, dynamic> json) {
+WorkoutTemplate _$WorkoutTemplateFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
     requiredKeys: const ['name'],
   );
-  return Workout(
+  return WorkoutTemplate(
     name: json['name'] as String,
     exercises: (json['exercises'] as List<dynamic>?)
             ?.map((e) => Exercise.fromJson(e as Map<String, dynamic>))
@@ -20,7 +20,8 @@ Workout _$WorkoutFromJson(Map<String, dynamic> json) {
   )..lastPerformed = json['last_performed'] as int?;
 }
 
-Map<String, dynamic> _$WorkoutToJson(Workout instance) => <String, dynamic>{
+Map<String, dynamic> _$WorkoutTemplateToJson(WorkoutTemplate instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'exercises': instance.exercises.map((e) => e.toJson()).toList(),
       'last_performed': instance.lastPerformed,

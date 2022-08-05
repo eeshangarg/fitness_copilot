@@ -1,15 +1,16 @@
 import 'dart:collection';
 
 import 'package:fitness_copilot/models/workout/sample_data.dart';
-import 'package:fitness_copilot/models/workout/workout.dart';
+import 'package:fitness_copilot/models/workout/workout_template.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutTemplateCollection extends ChangeNotifier {
-  final List<Workout> _workouts = sampleWorkouts;
+  final List<WorkoutTemplate> _workouts = sampleWorkoutTemplates;
 
-  UnmodifiableListView<Workout> get workouts => UnmodifiableListView(_workouts);
+  UnmodifiableListView<WorkoutTemplate> get workouts =>
+      UnmodifiableListView(_workouts);
 
-  void removeWorkout(Workout workout) {
+  void remove(WorkoutTemplate workout) {
     _workouts.remove(workout);
     notifyListeners();
   }

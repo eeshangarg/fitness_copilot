@@ -1,6 +1,6 @@
 import 'package:fitness_copilot/components/workout/exercise/exercise_set_tile.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
-import 'package:fitness_copilot/models/workout/workout.dart';
+import 'package:fitness_copilot/models/workout/workout_template.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -54,7 +54,7 @@ class ExerciseExpansionPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return ExpansionPanelList.radio(
       initialOpenPanelValue: 1,
-      children: _getChildren(context.watch<Workout>().exercises),
+      children: _getChildren(context.watch<WorkoutTemplate>().exercises),
     );
   }
 }

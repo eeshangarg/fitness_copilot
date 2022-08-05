@@ -2,13 +2,13 @@ import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'workout.g.dart';
+part 'workout_template.g.dart';
 
 @JsonSerializable(
   explicitToJson: true,
   fieldRename: FieldRename.snake,
 )
-class Workout extends ChangeNotifier {
+class WorkoutTemplate extends ChangeNotifier {
   @JsonKey(required: true)
   final String name;
 
@@ -18,10 +18,10 @@ class Workout extends ChangeNotifier {
   // Unix timestamp in UTC
   int? lastPerformed;
 
-  Workout({required this.name, this.exercises = const []});
+  WorkoutTemplate({required this.name, this.exercises = const []});
 
-  factory Workout.fromJson(Map<String, dynamic> json) =>
-      _$WorkoutFromJson(json);
+  factory WorkoutTemplate.fromJson(Map<String, dynamic> json) =>
+      _$WorkoutTemplateFromJson(json);
 
-  Map<String, dynamic> toJson() => _$WorkoutToJson(this);
+  Map<String, dynamic> toJson() => _$WorkoutTemplateToJson(this);
 }

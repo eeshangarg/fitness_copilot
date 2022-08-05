@@ -1,13 +1,13 @@
 import 'package:fitness_copilot/components/workout/workout_last_performed_indicator.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
-import 'package:fitness_copilot/models/workout/workout.dart';
+import 'package:fitness_copilot/models/workout/workout_template.dart';
 import 'package:fitness_copilot/screens/workout_started.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class WorkoutDetailsDialog extends StatelessWidget {
-  const WorkoutDetailsDialog({Key? key}) : super(key: key);
+class WorkoutTemplateDetailsDialog extends StatelessWidget {
+  const WorkoutTemplateDetailsDialog({Key? key}) : super(key: key);
 
   List<ListTile> _getExerciseTiles(List<Exercise> exercises) {
     List<ListTile> tiles = [];
@@ -27,7 +27,7 @@ class WorkoutDetailsDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Workout workout = context.watch<Workout>();
+    WorkoutTemplate workoutTemplate = context.watch<WorkoutTemplate>();
 
     return AlertDialog(
       scrollable: true,
@@ -37,7 +37,7 @@ class WorkoutDetailsDialog extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(workout.name),
+              Text(workoutTemplate.name),
               IconButton(
                 onPressed: () {
                   // TODO: Add the ability to edit a workout.
@@ -53,7 +53,7 @@ class WorkoutDetailsDialog extends StatelessWidget {
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
-        children: _getExerciseTiles(workout.exercises),
+        children: _getExerciseTiles(workoutTemplate.exercises),
       ),
       actions: [
         TextButton(
@@ -64,7 +64,7 @@ class WorkoutDetailsDialog extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) {
                   return ChangeNotifierProvider.value(
-                    value: workout,
+                    value: workoutTemplate,
                     child: const WorkoutStarted(),
                   );
                 },

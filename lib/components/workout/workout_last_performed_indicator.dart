@@ -1,4 +1,4 @@
-import 'package:fitness_copilot/models/workout/workout.dart';
+import 'package:fitness_copilot/models/workout/workout_template.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +32,9 @@ class WorkoutLastPerformedIndicator extends StatelessWidget {
         ),
         const SizedBox(width: 6.0),
         Text(
-          _getLastPerformedLabel(context.watch<Workout>().lastPerformed),
+          _getLastPerformedLabel(
+            context.watch<WorkoutTemplate>().lastPerformed,
+          ),
           style: Theme.of(context).textTheme.labelMedium,
         )
       ],

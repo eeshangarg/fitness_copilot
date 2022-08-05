@@ -1,18 +1,18 @@
-import 'package:fitness_copilot/components/workout/workout_details_dialog.dart';
-import 'package:fitness_copilot/components/workout/workout_exercises_summary.dart';
 import 'package:fitness_copilot/components/workout/workout_last_performed_indicator.dart';
-import 'package:fitness_copilot/components/workout/workout_popup_menu_button.dart';
-import 'package:fitness_copilot/models/workout/workout.dart';
+import 'package:fitness_copilot/components/workout/workout_template_details_dialog.dart';
+import 'package:fitness_copilot/components/workout/workout_template_exercises_summary.dart';
+import 'package:fitness_copilot/components/workout/workout_template_popup_menu_button.dart';
+import 'package:fitness_copilot/models/workout/workout_template.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class WorkoutCard extends StatelessWidget {
-  const WorkoutCard({Key? key}) : super(key: key);
+class WorkoutTemplateCard extends StatelessWidget {
+  const WorkoutTemplateCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Workout workout = context.watch<Workout>();
+    WorkoutTemplate workoutTemplate = context.watch<WorkoutTemplate>();
 
     return GestureDetector(
       onTap: () {
@@ -20,8 +20,8 @@ class WorkoutCard extends StatelessWidget {
           context: context,
           builder: (BuildContext context) {
             return ChangeNotifierProvider.value(
-              value: workout,
-              child: const WorkoutDetailsDialog(),
+              value: workoutTemplate,
+              child: const WorkoutTemplateDetailsDialog(),
             );
           },
         );
@@ -37,14 +37,14 @@ class WorkoutCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    workout.name,
+                    workoutTemplate.name,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  const WorkoutPopupMenuButton(),
+                  const WorkoutTemplatePopupMenuButton(),
                 ],
               ),
               const SizedBox(height: 8.0),
-              const WorkoutExercisesSummary(),
+              const WorkoutTemplateExercisesSummary(),
               const SizedBox(height: 8.0),
               const WorkoutLastPerformedIndicator(),
             ],
