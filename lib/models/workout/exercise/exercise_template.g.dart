@@ -1,17 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'exercise.dart';
+part of 'exercise_template.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Exercise _$ExerciseFromJson(Map<String, dynamic> json) {
+ExerciseTemplate _$ExerciseTemplateFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
     requiredKeys: const ['name', 'body_part'],
   );
-  return Exercise(
+  return ExerciseTemplate(
     name: json['name'] as String,
     bodyPart: json['body_part'] as String,
     sets: (json['sets'] as List<dynamic>?)
@@ -21,7 +21,8 @@ Exercise _$ExerciseFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ExerciseToJson(Exercise instance) => <String, dynamic>{
+Map<String, dynamic> _$ExerciseTemplateToJson(ExerciseTemplate instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'body_part': instance.bodyPart,
       'sets': instance.sets.map((e) => e.toJson()).toList(),

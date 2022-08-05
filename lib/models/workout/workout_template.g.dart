@@ -14,7 +14,7 @@ WorkoutTemplate _$WorkoutTemplateFromJson(Map<String, dynamic> json) {
   return WorkoutTemplate(
     name: json['name'] as String,
     exercises: (json['exercises'] as List<dynamic>?)
-            ?.map((e) => Exercise.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => ExerciseTemplate.fromJson(e as Map<String, dynamic>))
             .toList() ??
         [],
   )..lastPerformed = json['last_performed'] as int?;

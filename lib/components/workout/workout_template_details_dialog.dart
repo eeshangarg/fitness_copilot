@@ -1,5 +1,5 @@
 import 'package:fitness_copilot/components/workout/workout_last_performed_indicator.dart';
-import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
 import 'package:fitness_copilot/models/workout/workout_template.dart';
 import 'package:fitness_copilot/screens/workout_started.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 class WorkoutTemplateDetailsDialog extends StatelessWidget {
   const WorkoutTemplateDetailsDialog({Key? key}) : super(key: key);
 
-  List<ListTile> _getExerciseTiles(List<Exercise> exercises) {
+  List<ListTile> _getExerciseTiles(List<ExerciseTemplate> exercises) {
     List<ListTile> tiles = [];
 
     for (final exercise in exercises) {

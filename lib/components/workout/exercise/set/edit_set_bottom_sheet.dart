@@ -1,7 +1,7 @@
 import 'package:fitness_copilot/components/workout/exercise/set/rep_text_field.dart';
 import 'package:fitness_copilot/components/workout/exercise/set/weight_text_field.dart';
-import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise_set.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -32,8 +32,8 @@ class _EditSetBottomSheetState extends State<EditSetBottomSheet> {
   @override
   Widget build(BuildContext context) {
     ExerciseSet set = context.watch<ExerciseSet>();
-    Exercise exercise = context.watch<Exercise>();
-    int setNumber = exercise.sets.indexOf(set) + 1;
+    ExerciseTemplate exerciseTemplate = context.watch<ExerciseTemplate>();
+    int setNumber = exerciseTemplate.sets.indexOf(set) + 1;
 
     repGoalEditingController.text = set.repGoal.toString();
 
@@ -54,7 +54,7 @@ class _EditSetBottomSheetState extends State<EditSetBottomSheet> {
                 ),
                 const SizedBox(height: 4.0),
                 Text(
-                  exercise.name,
+                  exerciseTemplate.name,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(height: 16.0),

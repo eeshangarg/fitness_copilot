@@ -1,8 +1,8 @@
-import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise_set.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
 import 'package:fitness_copilot/models/workout/workout_template.dart';
 
-Exercise facePulls = Exercise(
+ExerciseTemplate facePulls = ExerciseTemplate(
   name: 'Face Pull (Cable)',
   bodyPart: 'Shoulders',
   sets: [
@@ -11,7 +11,7 @@ Exercise facePulls = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise overheadPress = Exercise(
+ExerciseTemplate overheadPress = ExerciseTemplate(
   name: 'Overhead Press (Dumbbell)',
   bodyPart: 'Shoulders',
   sets: [
@@ -20,7 +20,7 @@ Exercise overheadPress = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise chestDip = Exercise(
+ExerciseTemplate chestDip = ExerciseTemplate(
   name: 'Chest Dip',
   bodyPart: 'Chest',
   sets: [
@@ -29,7 +29,7 @@ Exercise chestDip = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise shoulderRaises = Exercise(
+ExerciseTemplate shoulderRaises = ExerciseTemplate(
   name: 'Seated DB Front + Lateral + Rear Delt Raises',
   bodyPart: 'Shoulders',
   sets: [
@@ -38,7 +38,7 @@ Exercise shoulderRaises = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise widePullUp = Exercise(
+ExerciseTemplate widePullUp = ExerciseTemplate(
   name: 'Wide Pull Up',
   bodyPart: 'Back',
   sets: [
@@ -47,7 +47,7 @@ Exercise widePullUp = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise seatedCalfRaise = Exercise(
+ExerciseTemplate seatedCalfRaise = ExerciseTemplate(
   name: 'Seated Calf Raise (Machine)',
   bodyPart: 'Legs',
   sets: [
@@ -56,7 +56,7 @@ Exercise seatedCalfRaise = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise standingCalfRaise = Exercise(
+ExerciseTemplate standingCalfRaise = ExerciseTemplate(
   name: 'Standing Calf Raise (Machine)',
   bodyPart: 'Legs',
   sets: [
@@ -65,7 +65,7 @@ Exercise standingCalfRaise = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise tricepPushdown = Exercise(
+ExerciseTemplate tricepPushdown = ExerciseTemplate(
   name: 'Tricep Pushdown (Cable - Straight Bar)',
   bodyPart: 'Arms',
   sets: [
@@ -74,7 +74,7 @@ Exercise tricepPushdown = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise hammerCurl = Exercise(
+ExerciseTemplate hammerCurl = ExerciseTemplate(
   name: 'Hammer Curl (Dumbbell)',
   bodyPart: 'Arms',
   sets: [
@@ -83,7 +83,7 @@ Exercise hammerCurl = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise tricepPushups = Exercise(
+ExerciseTemplate tricepPushups = ExerciseTemplate(
   name: 'Tricep Push-ups',
   bodyPart: 'Arms',
   sets: [
@@ -92,7 +92,7 @@ Exercise tricepPushups = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise bicepChinups = Exercise(
+ExerciseTemplate bicepChinups = ExerciseTemplate(
   name: 'Bicep Dominant Chin-ups',
   bodyPart: 'Arms',
   sets: [
@@ -101,7 +101,7 @@ Exercise bicepChinups = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise closeGripBenchPress = Exercise(
+ExerciseTemplate closeGripBenchPress = ExerciseTemplate(
   name: 'Bench Press - Close Grip (Barbell)',
   bodyPart: 'Arms',
   sets: [
@@ -110,7 +110,7 @@ Exercise closeGripBenchPress = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise lyingLegCurl = Exercise(
+ExerciseTemplate lyingLegCurl = ExerciseTemplate(
   name: 'Lying Leg Curl (Machine)',
   bodyPart: 'Legs',
   sets: [
@@ -119,7 +119,7 @@ Exercise lyingLegCurl = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise gobletSquat = Exercise(
+ExerciseTemplate gobletSquat = ExerciseTemplate(
   name: 'Goblet Squat (Kettlebell)',
   bodyPart: 'Legs',
   sets: [
@@ -128,7 +128,7 @@ Exercise gobletSquat = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise romanianDeadlift = Exercise(
+ExerciseTemplate romanianDeadlift = ExerciseTemplate(
   name: 'Romanian Deadlift (Barbell)',
   bodyPart: 'Legs',
   sets: [
@@ -137,7 +137,7 @@ Exercise romanianDeadlift = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise bulgarianSplitSquat = Exercise(
+ExerciseTemplate bulgarianSplitSquat = ExerciseTemplate(
   name: 'Bulgarian Split Squat',
   bodyPart: 'Legs',
   sets: [
@@ -146,7 +146,7 @@ Exercise bulgarianSplitSquat = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise legPress = Exercise(
+ExerciseTemplate legPress = ExerciseTemplate(
   name: 'Leg Press',
   bodyPart: 'Legs',
   sets: [
@@ -155,7 +155,7 @@ Exercise legPress = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise oneArmRow = Exercise(
+ExerciseTemplate oneArmRow = ExerciseTemplate(
   name: 'Bent Over One Arm Row (Dumbbell)',
   bodyPart: 'Back',
   sets: [
@@ -164,7 +164,7 @@ Exercise oneArmRow = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise inclineRow = Exercise(
+ExerciseTemplate inclineRow = ExerciseTemplate(
   name: 'Incline Row (Dumbbell)',
   bodyPart: 'Back',
   sets: [
@@ -173,7 +173,7 @@ Exercise inclineRow = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise invertedRow = Exercise(
+ExerciseTemplate invertedRow = ExerciseTemplate(
   name: 'Inverted Row (Bodyweight)',
   bodyPart: 'Back',
   sets: [
@@ -182,7 +182,7 @@ Exercise invertedRow = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise chinUp = Exercise(
+ExerciseTemplate chinUp = ExerciseTemplate(
   name: 'Chin Up',
   bodyPart: 'Back',
   sets: [
@@ -191,7 +191,7 @@ Exercise chinUp = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise shrugs = Exercise(
+ExerciseTemplate shrugs = ExerciseTemplate(
   name: 'Shrug (Dumbbell)',
   bodyPart: 'Back',
   sets: [
@@ -200,7 +200,7 @@ Exercise shrugs = Exercise(
     ExerciseSet(repGoal: 10, weight: 20.0),
   ],
 );
-Exercise backExtension = Exercise(
+ExerciseTemplate backExtension = ExerciseTemplate(
   name: 'Back Extension',
   bodyPart: 'Back',
   sets: [

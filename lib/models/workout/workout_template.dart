@@ -1,4 +1,4 @@
-import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -13,7 +13,7 @@ class WorkoutTemplate extends ChangeNotifier {
   final String name;
 
   @JsonKey(defaultValue: [])
-  List<Exercise> exercises;
+  List<ExerciseTemplate> exercises;
 
   // Unix timestamp in UTC
   int? lastPerformed;

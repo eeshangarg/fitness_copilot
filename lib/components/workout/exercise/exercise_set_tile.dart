@@ -1,6 +1,6 @@
 import 'package:fitness_copilot/components/workout/exercise/set/edit_set_bottom_sheet.dart';
-import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise_set.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,8 +12,8 @@ class ExerciseSetTile extends StatelessWidget {
     TextStyle? titleMedium = Theme.of(context).textTheme.titleMedium;
 
     ExerciseSet set = context.watch<ExerciseSet>();
-    Exercise exercise = context.watch<Exercise>();
-    int setNumber = exercise.sets.indexOf(set) + 1;
+    ExerciseTemplate exerciseTemplate = context.watch<ExerciseTemplate>();
+    int setNumber = exerciseTemplate.sets.indexOf(set) + 1;
 
     return ListTile(
       onTap: () {
@@ -23,7 +23,7 @@ class ExerciseSetTile extends StatelessWidget {
           builder: (BuildContext context) {
             return MultiProvider(
               providers: [
-                ChangeNotifierProvider.value(value: exercise),
+                ChangeNotifierProvider.value(value: exerciseTemplate),
                 ChangeNotifierProvider.value(value: set),
               ],
               child: const EditSetBottomSheet(),

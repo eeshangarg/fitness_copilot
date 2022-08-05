@@ -1,4 +1,4 @@
-import 'package:fitness_copilot/models/workout/exercise/exercise.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
 import 'package:fitness_copilot/models/workout/workout_template.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class WorkoutTemplateExercisesSummary extends StatelessWidget {
   const WorkoutTemplateExercisesSummary({Key? key}) : super(key: key);
 
-  String _getWorkoutSummary(List<Exercise> exercises) {
+  String _getWorkoutSummary(List<ExerciseTemplate> exercises) {
     List<String> exerciseNames = [];
     for (final exercise in exercises) {
       exerciseNames.add(exercise.name);
