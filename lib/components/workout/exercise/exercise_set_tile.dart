@@ -1,6 +1,6 @@
 import 'package:fitness_copilot/components/workout/exercise/set/edit_set_bottom_sheet.dart';
-import 'package:fitness_copilot/models/workout/exercise/exercise_set.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
+import 'package:fitness_copilot/models/workout/exercise/set_template.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,9 +11,9 @@ class ExerciseSetTile extends StatelessWidget {
   Widget build(BuildContext context) {
     TextStyle? titleMedium = Theme.of(context).textTheme.titleMedium;
 
-    ExerciseSet set = context.watch<ExerciseSet>();
+    SetTemplate setTemplate = context.watch<SetTemplate>();
     ExerciseTemplate exerciseTemplate = context.watch<ExerciseTemplate>();
-    int setNumber = exerciseTemplate.sets.indexOf(set) + 1;
+    int setNumber = exerciseTemplate.sets.indexOf(setTemplate) + 1;
 
     return ListTile(
       onTap: () {
@@ -24,7 +24,7 @@ class ExerciseSetTile extends StatelessWidget {
             return MultiProvider(
               providers: [
                 ChangeNotifierProvider.value(value: exerciseTemplate),
-                ChangeNotifierProvider.value(value: set),
+                ChangeNotifierProvider.value(value: setTemplate),
               ],
               child: const EditSetBottomSheet(),
             );
@@ -39,7 +39,7 @@ class ExerciseSetTile extends StatelessWidget {
         children: [
           RichText(
             text: TextSpan(
-              text: '${set.weight} ',
+              text: '${setTemplate.weight} ',
               style: titleMedium,
               children: [
                 TextSpan(
@@ -55,7 +55,7 @@ class ExerciseSetTile extends StatelessWidget {
           ),
           RichText(
             text: TextSpan(
-              text: '${set.repsPerformed} / ${set.repGoal} ',
+              text: '${setTemplate.repsPerformed} / ${setTemplate.repGoal} ',
               style: titleMedium,
               children: [
                 TextSpan(

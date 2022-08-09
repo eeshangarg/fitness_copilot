@@ -1,4 +1,4 @@
-import 'package:fitness_copilot/models/workout/exercise/exercise_set.dart';
+import 'package:fitness_copilot/models/workout/exercise/set_template.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -16,7 +16,7 @@ class ExerciseTemplate extends ChangeNotifier {
   final String bodyPart;
 
   @JsonKey(defaultValue: [])
-  List<ExerciseSet> sets = [];
+  List<SetTemplate> sets = [];
 
   ExerciseTemplate({
     required this.name,

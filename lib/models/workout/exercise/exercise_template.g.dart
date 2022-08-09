@@ -15,7 +15,7 @@ ExerciseTemplate _$ExerciseTemplateFromJson(Map<String, dynamic> json) {
     name: json['name'] as String,
     bodyPart: json['body_part'] as String,
     sets: (json['sets'] as List<dynamic>?)
-            ?.map((e) => ExerciseSet.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => SetTemplate.fromJson(e as Map<String, dynamic>))
             .toList() ??
         [],
   );

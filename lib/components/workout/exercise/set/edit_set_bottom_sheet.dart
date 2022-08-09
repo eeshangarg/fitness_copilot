@@ -1,7 +1,7 @@
 import 'package:fitness_copilot/components/workout/exercise/set/rep_text_field.dart';
 import 'package:fitness_copilot/components/workout/exercise/set/weight_text_field.dart';
-import 'package:fitness_copilot/models/workout/exercise/exercise_set.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
+import 'package:fitness_copilot/models/workout/exercise/set_template.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -31,11 +31,11 @@ class _EditSetBottomSheetState extends State<EditSetBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    ExerciseSet set = context.watch<ExerciseSet>();
+    SetTemplate setTemplate = context.watch<SetTemplate>();
     ExerciseTemplate exerciseTemplate = context.watch<ExerciseTemplate>();
-    int setNumber = exerciseTemplate.sets.indexOf(set) + 1;
+    int setNumber = exerciseTemplate.sets.indexOf(setTemplate) + 1;
 
-    repGoalEditingController.text = set.repGoal.toString();
+    repGoalEditingController.text = setTemplate.repGoal.toString();
 
     return Container(
       padding: EdgeInsets.only(
@@ -87,7 +87,7 @@ class _EditSetBottomSheetState extends State<EditSetBottomSheet> {
                         child: const Text('Done'),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            set.update(
+                            setTemplate.update(
                               repGoal: int.parse(repGoalEditingController.text),
                               weight:
                                   double.parse(weightEditingController.text),
