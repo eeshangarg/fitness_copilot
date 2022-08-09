@@ -11,7 +11,16 @@ class SetTemplate extends ChangeNotifier {
   @JsonKey(defaultValue: 0.0)
   double weight = 0.0; // in lbs
 
-  SetTemplate({required this.repGoal, required this.weight});
+  // Unix timestamp in UTC
+  int? lastPerformed;
+
+  // Unix timestamp in UTC
+  @JsonKey(required: true)
+  int? creationDate;
+
+  SetTemplate({required this.repGoal, required this.weight}) {
+    creationDate = DateTime.now().millisecondsSinceEpoch;
+  }
 
   void update({required int repGoal, required double weight}) {
     this.repGoal = repGoal;

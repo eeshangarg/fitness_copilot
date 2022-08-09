@@ -18,11 +18,20 @@ class ExerciseTemplate extends ChangeNotifier {
   @JsonKey(defaultValue: [])
   List<SetTemplate> sets = [];
 
+  // Unix timestamp in UTC
+  int? lastPerformed;
+
+  // Unix timestamp in UTC
+  @JsonKey(required: true)
+  int? creationDate;
+
   ExerciseTemplate({
     required this.name,
     required this.bodyPart,
     this.sets = const [],
-  });
+  }) {
+    creationDate = DateTime.now().millisecondsSinceEpoch;
+  }
 
   factory ExerciseTemplate.fromJson(Map<String, dynamic> json) =>
       _$ExerciseTemplateFromJson(json);

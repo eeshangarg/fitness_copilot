@@ -18,7 +18,13 @@ class WorkoutTemplate extends ChangeNotifier {
   // Unix timestamp in UTC
   int? lastPerformed;
 
-  WorkoutTemplate({required this.name, this.exercises = const []});
+  // Unix timestamp in UTC
+  @JsonKey(required: true)
+  int? creationDate;
+
+  WorkoutTemplate({required this.name, this.exercises = const []}) {
+    creationDate = DateTime.now().millisecondsSinceEpoch;
+  }
 
   factory WorkoutTemplate.fromJson(Map<String, dynamic> json) =>
       _$WorkoutTemplateFromJson(json);

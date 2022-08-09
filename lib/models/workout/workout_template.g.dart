@@ -9,7 +9,7 @@ part of 'workout_template.dart';
 WorkoutTemplate _$WorkoutTemplateFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
-    requiredKeys: const ['name'],
+    requiredKeys: const ['name', 'creation_date'],
   );
   return WorkoutTemplate(
     name: json['name'] as String,
@@ -17,7 +17,9 @@ WorkoutTemplate _$WorkoutTemplateFromJson(Map<String, dynamic> json) {
             ?.map((e) => ExerciseTemplate.fromJson(e as Map<String, dynamic>))
             .toList() ??
         [],
-  )..lastPerformed = json['last_performed'] as int?;
+  )
+    ..lastPerformed = json['last_performed'] as int?
+    ..creationDate = json['creation_date'] as int?;
 }
 
 Map<String, dynamic> _$WorkoutTemplateToJson(WorkoutTemplate instance) =>
@@ -25,4 +27,5 @@ Map<String, dynamic> _$WorkoutTemplateToJson(WorkoutTemplate instance) =>
       'name': instance.name,
       'exercises': instance.exercises.map((e) => e.toJson()).toList(),
       'last_performed': instance.lastPerformed,
+      'creation_date': instance.creationDate,
     };
