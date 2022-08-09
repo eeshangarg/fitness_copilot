@@ -11,23 +11,11 @@ class SetTemplate extends ChangeNotifier {
   @JsonKey(defaultValue: 0.0)
   double weight = 0.0; // in lbs
 
-  @JsonKey(defaultValue: 0)
-  int repsPerformed = 0;
+  SetTemplate({required this.repGoal, required this.weight});
 
-  SetTemplate({
-    required this.repGoal,
-    required this.weight,
-    this.repsPerformed = 0,
-  });
-
-  void update({
-    required int repGoal,
-    required double weight,
-    required int repsPerformed,
-  }) {
+  void update({required int repGoal, required double weight}) {
     this.repGoal = repGoal;
     this.weight = weight;
-    this.repsPerformed = repsPerformed;
     notifyListeners();
   }
 

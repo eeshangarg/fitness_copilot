@@ -1,5 +1,5 @@
 import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
-import 'package:fitness_copilot/models/workout/exercise/set_template.dart';
+import 'package:fitness_copilot/models/workout/exercise/set/set_template.dart';
 import 'package:fitness_copilot/models/workout/workout_template.dart';
 
 ExerciseTemplate facePulls = ExerciseTemplate(

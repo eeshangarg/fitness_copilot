@@ -1,7 +1,7 @@
 import 'package:fitness_copilot/components/workout/exercise/set/rep_text_field.dart';
 import 'package:fitness_copilot/components/workout/exercise/set/weight_text_field.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
-import 'package:fitness_copilot/models/workout/exercise/set_template.dart';
+import 'package:fitness_copilot/models/workout/exercise/set/set_template.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -91,8 +91,6 @@ class _EditSetBottomSheetState extends State<EditSetBottomSheet> {
                               repGoal: int.parse(repGoalEditingController.text),
                               weight:
                                   double.parse(weightEditingController.text),
-                              repsPerformed: int.parse(
-                                  repsPerformedEditingController.text),
                             );
                             Navigator.pop(context);
                           }

@@ -1,4 +1,4 @@
-import 'package:fitness_copilot/models/workout/exercise/set_template.dart';
+import 'package:fitness_copilot/models/workout/exercise/set/set_template.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 

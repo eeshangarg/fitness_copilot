@@ -1,6 +1,6 @@
 import 'package:fitness_copilot/components/workout/exercise/set/edit_set_bottom_sheet.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
-import 'package:fitness_copilot/models/workout/exercise/set_template.dart';
+import 'package:fitness_copilot/models/workout/exercise/set/set_template.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -55,7 +55,7 @@ class ExerciseSetTile extends StatelessWidget {
           ),
           RichText(
             text: TextSpan(
-              text: '${setTemplate.repsPerformed} / ${setTemplate.repGoal} ',
+              text: '0 / ${setTemplate.repGoal} ',
               style: titleMedium,
               children: [
                 TextSpan(
