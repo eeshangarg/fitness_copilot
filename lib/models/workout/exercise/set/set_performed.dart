@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'set.g.dart';
+part 'set_performed.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class Set extends ChangeNotifier {
+class SetPerformed extends ChangeNotifier {
   @JsonKey(defaultValue: 0.0)
   double weight = 0.0; // in lbs
 
@@ -17,7 +17,7 @@ class Set extends ChangeNotifier {
   @JsonKey(required: true)
   int? creationDate;
 
-  Set({required this.weight, this.repsPerformed = 0}) {
+  SetPerformed({required this.weight, this.repsPerformed = 0}) {
     creationDate = DateTime.now().millisecondsSinceEpoch;
   }
 
@@ -27,7 +27,8 @@ class Set extends ChangeNotifier {
     notifyListeners();
   }
 
-  factory Set.fromJson(Map<String, dynamic> json) => _$SetFromJson(json);
+  factory SetPerformed.fromJson(Map<String, dynamic> json) =>
+      _$SetPerformedFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SetToJson(this);
+  Map<String, dynamic> toJson() => _$SetPerformedToJson(this);
 }
