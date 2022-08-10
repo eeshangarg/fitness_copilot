@@ -19,9 +19,6 @@ class ExercisePerformed extends ChangeNotifier {
   List<SetPerformed> sets = [];
 
   // Unix timestamp in UTC
-  // Note that creationDate is also the date that the given exercise was
-  // last performed. SetTemplate.lastPerformed == the Set with the latest
-  // Set.creationDate
   @JsonKey(required: true)
   int? creationDate;
 

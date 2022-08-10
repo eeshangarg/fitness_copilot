@@ -12,8 +12,6 @@ class SetPerformed extends ChangeNotifier {
   int repsPerformed = 0;
 
   // Unix timestamp in UTC
-  // Note that creationDate is also the date that the given set was
-  // last performed. SetTemplate.lastPerformed == Set.creationDate
   @JsonKey(required: true)
   int? creationDate;
 
