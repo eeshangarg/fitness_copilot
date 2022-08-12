@@ -1,5 +1,7 @@
 import 'package:fitness_copilot/components/workout/exercise/exercise_set_tile.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise_performed.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
+import 'package:fitness_copilot/models/workout/workout_performed.dart';
 import 'package:fitness_copilot/models/workout/workout_template.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +11,7 @@ class ExerciseExpansionPanel extends StatelessWidget {
 
   ExpansionPanelRadio _buildExpansionPanelRadio(
     ExerciseTemplate exerciseTemplate,
+    ExercisePerformed exercisePerformed,
     int value,
   ) {
     return ExpansionPanelRadio(
@@ -32,7 +35,11 @@ class ExerciseExpansionPanel extends StatelessWidget {
           return MultiProvider(
             providers: [
               ChangeNotifierProvider.value(value: exerciseTemplate),
-              ChangeNotifierProvider.value(value: exerciseTemplate.sets[index])
+              ChangeNotifierProvider.value(value: exerciseTemplate.sets[index]),
+              ChangeNotifierProvider.value(value: exercisePerformed),
+              ChangeNotifierProvider.value(
+                value: exercisePerformed.sets[index],
+              ),
             ],
             child: const ExerciseSetTile(),
           );
@@ -46,10 +53,17 @@ class ExerciseExpansionPanel extends StatelessWidget {
 
   List<ExpansionPanelRadio> _getChildren(
     List<ExerciseTemplate> exerciseTemplates,
+    List<ExercisePerformed> exercisesPerformed,
   ) {
     List<ExpansionPanelRadio> children = [];
     for (var i = 0; i < exerciseTemplates.length; i++) {
-      children.add(_buildExpansionPanelRadio(exerciseTemplates[i], i + 1));
+      children.add(
+        _buildExpansionPanelRadio(
+          exerciseTemplates[i],
+          exercisesPerformed[i],
+          i + 1,
+        ),
+      );
     }
 
     return children;
@@ -57,9 +71,14 @@ class ExerciseExpansionPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<ExerciseTemplate> exerciseTemplates =
+        context.watch<WorkoutTemplate>().exercises;
+    List<ExercisePerformed> exercisesPerformed =
+        context.watch<WorkoutPerformed>().exercises;
+
     return ExpansionPanelList.radio(
       initialOpenPanelValue: 1,
-      children: _getChildren(context.watch<WorkoutTemplate>().exercises),
+      children: _getChildren(exerciseTemplates, exercisesPerformed),
     );
   }
 }

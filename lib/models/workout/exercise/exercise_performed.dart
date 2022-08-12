@@ -1,3 +1,4 @@
+import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
 import 'package:fitness_copilot/models/workout/exercise/set/set_performed.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -10,10 +11,10 @@ part 'exercise_performed.g.dart';
 )
 class ExercisePerformed extends ChangeNotifier {
   @JsonKey(required: true)
-  final String name;
+  late String name;
 
   @JsonKey(required: true)
-  final String bodyPart;
+  late String bodyPart;
 
   @JsonKey(defaultValue: [])
   List<SetPerformed> sets = [];
@@ -28,6 +29,15 @@ class ExercisePerformed extends ChangeNotifier {
     this.sets = const [],
   }) {
     creationDate = DateTime.now().millisecondsSinceEpoch;
+  }
+
+  ExercisePerformed.fromTemplate(ExerciseTemplate template) {
+    creationDate = DateTime.now().millisecondsSinceEpoch;
+    bodyPart = template.bodyPart;
+    name = template.name;
+    for (final setTemplate in template.sets) {
+      sets.add(SetPerformed.fromTemplate(setTemplate));
+    }
   }
 
   factory ExercisePerformed.fromJson(Map<String, dynamic> json) =>

@@ -28,6 +28,11 @@ class SetTemplate extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setRepGoal(int repGoal) {
+    this.repGoal = repGoal;
+    notifyListeners();
+  }
+
   factory SetTemplate.fromJson(Map<String, dynamic> json) =>
       _$SetTemplateFromJson(json);
 

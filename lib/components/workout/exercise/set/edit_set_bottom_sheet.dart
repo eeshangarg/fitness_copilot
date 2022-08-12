@@ -1,6 +1,7 @@
 import 'package:fitness_copilot/components/workout/exercise/set/rep_text_field.dart';
 import 'package:fitness_copilot/components/workout/exercise/set/weight_text_field.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
+import 'package:fitness_copilot/models/workout/exercise/set/set_performed.dart';
 import 'package:fitness_copilot/models/workout/exercise/set/set_template.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,7 @@ class _EditSetBottomSheetState extends State<EditSetBottomSheet> {
     SetTemplate setTemplate = context.watch<SetTemplate>();
     ExerciseTemplate exerciseTemplate = context.watch<ExerciseTemplate>();
     int setNumber = exerciseTemplate.sets.indexOf(setTemplate) + 1;
+    SetPerformed setPerformed = context.watch<SetPerformed>();
 
     repGoalEditingController.text = setTemplate.repGoal.toString();
 
@@ -87,10 +89,16 @@ class _EditSetBottomSheetState extends State<EditSetBottomSheet> {
                         child: const Text('Done'),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            setTemplate.update(
-                              repGoal: int.parse(repGoalEditingController.text),
-                              weight:
-                                  double.parse(weightEditingController.text),
+                            setTemplate.setRepGoal(
+                              int.parse(repGoalEditingController.text),
+                            );
+                            setPerformed.update(
+                              repsPerformed: int.parse(
+                                repsPerformedEditingController.text,
+                              ),
+                              weight: double.parse(
+                                weightEditingController.text,
+                              ),
                             );
                             Navigator.pop(context);
                           }

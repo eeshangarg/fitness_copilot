@@ -1,5 +1,7 @@
 import 'package:fitness_copilot/components/workout/exercise/set/edit_set_bottom_sheet.dart';
+import 'package:fitness_copilot/models/workout/exercise/exercise_performed.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
+import 'package:fitness_copilot/models/workout/exercise/set/set_performed.dart';
 import 'package:fitness_copilot/models/workout/exercise/set/set_template.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +16,8 @@ class ExerciseSetTile extends StatelessWidget {
     SetTemplate setTemplate = context.watch<SetTemplate>();
     ExerciseTemplate exerciseTemplate = context.watch<ExerciseTemplate>();
     int setNumber = exerciseTemplate.sets.indexOf(setTemplate) + 1;
+    ExercisePerformed exercisePerformed = context.watch<ExercisePerformed>();
+    SetPerformed setPerformed = context.watch<SetPerformed>();
 
     return ListTile(
       onTap: () {
@@ -25,6 +29,8 @@ class ExerciseSetTile extends StatelessWidget {
               providers: [
                 ChangeNotifierProvider.value(value: exerciseTemplate),
                 ChangeNotifierProvider.value(value: setTemplate),
+                ChangeNotifierProvider.value(value: exercisePerformed),
+                ChangeNotifierProvider.value(value: setPerformed),
               ],
               child: const EditSetBottomSheet(),
             );
@@ -55,7 +61,7 @@ class ExerciseSetTile extends StatelessWidget {
           ),
           RichText(
             text: TextSpan(
-              text: '0 / ${setTemplate.repGoal} ',
+              text: '${setPerformed.repsPerformed} / ${setTemplate.repGoal} ',
               style: titleMedium,
               children: [
                 TextSpan(

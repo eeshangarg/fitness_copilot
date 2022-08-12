@@ -1,3 +1,4 @@
+import 'package:fitness_copilot/models/workout/exercise/set/set_template.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -17,6 +18,12 @@ class SetPerformed extends ChangeNotifier {
 
   SetPerformed({required this.weight, this.repsPerformed = 0}) {
     creationDate = DateTime.now().millisecondsSinceEpoch;
+  }
+
+  SetPerformed.fromTemplate(SetTemplate template) {
+    creationDate = DateTime.now().millisecondsSinceEpoch;
+    repsPerformed = template.repGoal;
+    weight = template.weight;
   }
 
   void update({required double weight, required int repsPerformed}) {
