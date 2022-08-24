@@ -1,3 +1,4 @@
+import 'package:fitness_copilot/models/sample_data/sample_data_initializer.dart';
 import 'package:fitness_copilot/models/workout/workout_template_collection.dart';
 import 'package:fitness_copilot/screens/workouts.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
@@ -12,6 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final Future<void> _initializeSampleData = SampleDataInitializer.initialize();
+
   static const String kDashboardLabel = 'Dashboard';
   static const String kWorkoutsLabel = 'Workouts';
   static const String kHistoryLabel = 'History';
@@ -56,8 +59,17 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(_tabNames[_selectedIndex]),
       ),
-      body: Center(
-        child: widgetOptions.elementAt(_selectedIndex),
+      body: FutureBuilder<void>(
+        future: _initializeSampleData,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else {
+            return Center(
+              child: widgetOptions.elementAt(_selectedIndex),
+            );
+          }
+        },
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

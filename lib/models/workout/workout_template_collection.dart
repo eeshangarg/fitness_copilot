@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'package:fitness_copilot/models/workout/sample_data.dart';
+import 'package:fitness_copilot/models/sample_data/workout_templates.dart';
 import 'package:fitness_copilot/models/workout/workout_template.dart';
 import 'package:flutter/material.dart';
 
