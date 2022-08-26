@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final Future<void> _initializeSampleData = SampleDataInitializer.initialize();
+  late Future<WorkoutTemplateCollection> _initializeAndFetchData;
 
   static const String kDashboardLabel = 'Dashboard';
   static const String kWorkoutsLabel = 'Workouts';
@@ -34,6 +34,17 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  Future<WorkoutTemplateCollection> _fetchWorkouts() async {
+    await SampleDataInitializer.initialize();
+    return WorkoutTemplateCollection.fromFirestore();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeAndFetchData = _fetchWorkouts();
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> widgetOptions = <Widget>[
@@ -41,10 +52,7 @@ class _HomePageState extends State<HomePage> {
         kDashboardLabel,
         style: kNotImplementedPlaceholderTextStyle,
       ),
-      ChangeNotifierProvider(
-        create: (context) => WorkoutTemplateCollection(),
-        child: const Workouts(),
-      ),
+      const Workouts(),
       const Text(
         kHistoryLabel,
         style: kNotImplementedPlaceholderTextStyle,
@@ -59,14 +67,18 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(_tabNames[_selectedIndex]),
       ),
-      body: FutureBuilder<void>(
-        future: _initializeSampleData,
+      body: FutureBuilder<WorkoutTemplateCollection>(
+        future: _initializeAndFetchData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else {
+            var workoutTemplateCollection = snapshot.data!;
             return Center(
-              child: widgetOptions.elementAt(_selectedIndex),
+              child: ChangeNotifierProvider.value(
+                value: workoutTemplateCollection,
+                child: widgetOptions.elementAt(_selectedIndex),
+              ),
             );
           }
         },

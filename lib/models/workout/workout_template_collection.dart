@@ -1,17 +1,38 @@
 import 'dart:collection';
 
-import 'package:fitness_copilot/models/sample_data/workout_templates.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fitness_copilot/models/workout/workout_template.dart';
 import 'package:flutter/material.dart';
 
+final _db = FirebaseFirestore.instance;
+
 class WorkoutTemplateCollection extends ChangeNotifier {
-  final List<WorkoutTemplate> _workouts = sampleWorkoutTemplates;
+  final List<WorkoutTemplate> _workouts;
+  static const String _firestoreCollectionName = "workoutTemplates";
 
   UnmodifiableListView<WorkoutTemplate> get workouts =>
       UnmodifiableListView(_workouts);
 
-  void remove(WorkoutTemplate workout) {
+  WorkoutTemplateCollection(this._workouts);
+
+  static Future<WorkoutTemplateCollection> fromFirestore() async {
+    QuerySnapshot<Map<String, dynamic>> snapshots =
+        await _db.collection(_firestoreCollectionName).get();
+
+    List<WorkoutTemplate> workouts = [];
+    for (final workoutTemplate in snapshots.docs) {
+      workouts.add(WorkoutTemplate.fromJson(
+        workoutTemplate.id,
+        workoutTemplate.data(),
+      ));
+    }
+
+    return WorkoutTemplateCollection(workouts);
+  }
+
+  Future<void> remove(WorkoutTemplate workout) async {
     _workouts.remove(workout);
     notifyListeners();
+    await _db.collection(_firestoreCollectionName).doc(workout.id).delete();
   }
 }

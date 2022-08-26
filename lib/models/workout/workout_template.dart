@@ -9,6 +9,9 @@ part 'workout_template.g.dart';
   fieldRename: FieldRename.snake,
 )
 class WorkoutTemplate extends ChangeNotifier {
+  @JsonKey(ignore: true)
+  late final String id;
+
   @JsonKey(required: true)
   final String name;
 
@@ -26,8 +29,9 @@ class WorkoutTemplate extends ChangeNotifier {
     creationDate = DateTime.now().millisecondsSinceEpoch;
   }
 
-  factory WorkoutTemplate.fromJson(Map<String, dynamic> json) =>
-      _$WorkoutTemplateFromJson(json);
+  factory WorkoutTemplate.fromJson(String id, Map<String, dynamic> json) {
+    return _$WorkoutTemplateFromJson(json)..id = id;
+  }
 
   Map<String, dynamic> toJson() => _$WorkoutTemplateToJson(this);
 }
