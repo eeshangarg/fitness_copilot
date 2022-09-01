@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 final _db = FirebaseFirestore.instance;
 
 class WorkoutTemplateCollection extends ChangeNotifier {
-  final List<WorkoutTemplate> _workouts;
   static const String _firestoreCollectionName = "workoutTemplates";
+
+  final List<WorkoutTemplate> _workouts;
 
   UnmodifiableListView<WorkoutTemplate> get workouts =>
       UnmodifiableListView(_workouts);

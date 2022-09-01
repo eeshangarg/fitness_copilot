@@ -15,9 +15,13 @@ class WorkoutLastPerformedIndicator extends StatelessWidget {
       isUtc: true,
     );
     int daysAgo = DateTime.now().difference(lastPerformedDate).inDays;
-    if (daysAgo == 1) {
+
+    if (daysAgo == 0) {
+      return 'Today';
+    } else if (daysAgo == 1) {
       return 'Yesterday';
     }
+
     return '$daysAgo days ago';
   }
 

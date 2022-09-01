@@ -22,7 +22,6 @@ class SetPerformed extends ChangeNotifier {
 
   SetPerformed.fromTemplate(SetTemplate template) {
     creationDate = DateTime.now().millisecondsSinceEpoch;
-    repsPerformed = template.repGoal;
     weight = template.weight;
   }
 

@@ -38,6 +38,7 @@ class _EditSetBottomSheetState extends State<EditSetBottomSheet> {
     SetPerformed setPerformed = context.watch<SetPerformed>();
 
     repGoalEditingController.text = setTemplate.repGoal.toString();
+    weightEditingController.text = setTemplate.weight.toString();
 
     return Container(
       padding: EdgeInsets.only(
