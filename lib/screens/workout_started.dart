@@ -49,7 +49,6 @@ class WorkoutStarted extends StatelessWidget {
                       timerService.stop();
                       timerService.reset();
                       Navigator.pop(context);
-                      Navigator.pop(context);
                     },
                   );
                 },

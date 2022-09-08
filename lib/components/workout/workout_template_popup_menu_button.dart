@@ -1,3 +1,4 @@
+import 'package:fitness_copilot/components/confirmation_alert_dialog.dart';
 import 'package:fitness_copilot/components/workout/workout_popup_menu_tile.dart';
 import 'package:fitness_copilot/models/workout/workout_template.dart';
 import 'package:fitness_copilot/models/workout/workout_template_collection.dart';
@@ -41,7 +42,19 @@ class WorkoutTemplatePopupMenuButton extends StatelessWidget {
         if (option == WorkoutTemplateOption.edit) {
           // TODO: Implement the ability to edit a workout.
         } else if (option == WorkoutTemplateOption.delete) {
-          workoutTemplateCollection.remove(workoutTemplate);
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return ConfirmationAlertDialog(
+                title: 'Delete workout?',
+                contentMessage: 'Are you sure you want to delete this workout?',
+                confirmationButtonText: 'Delete',
+                onPressedConfirmation: () => workoutTemplateCollection.remove(
+                  workoutTemplate,
+                ),
+              );
+            },
+          );
         }
       },
     );

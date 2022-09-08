@@ -13,7 +13,7 @@ class ConfirmationAlertDialog extends StatelessWidget {
   final String title;
   final String contentMessage;
   final String confirmationButtonText;
-  final void Function()? onPressedConfirmation;
+  final void Function() onPressedConfirmation;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,10 @@ class ConfirmationAlertDialog extends StatelessWidget {
       ),
       actions: [
         TextButton(
-          onPressed: onPressedConfirmation,
+          onPressed: () {
+            onPressedConfirmation();
+            Navigator.pop(context);
+          },
           child: Text(confirmationButtonText),
         ),
         TextButton(
