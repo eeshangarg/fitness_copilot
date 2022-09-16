@@ -1,5 +1,5 @@
-import 'package:fitness_copilot/models/sample_data/sample_data_initializer.dart';
-import 'package:fitness_copilot/models/workout/workout_template_collection.dart';
+import 'package:fitness_copilot/models/data_capsule.dart';
+import 'package:fitness_copilot/screens/history.dart';
 import 'package:fitness_copilot/screens/workouts.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Future<WorkoutTemplateCollection> _initializeAndFetchData;
+  late final Future<DataCapsule> _fetchDataCapsule =
+      DataCapsule.fromFirestore();
 
   static const String kDashboardLabel = 'Dashboard';
   static const String kWorkoutsLabel = 'Workouts';
@@ -34,17 +35,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  Future<WorkoutTemplateCollection> _fetchWorkouts() async {
-    await SampleDataInitializer.initialize();
-    return WorkoutTemplateCollection.fromFirestore();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _initializeAndFetchData = _fetchWorkouts();
-  }
-
   @override
   Widget build(BuildContext context) {
     final List<Widget> widgetOptions = <Widget>[
@@ -53,10 +43,7 @@ class _HomePageState extends State<HomePage> {
         style: kNotImplementedPlaceholderTextStyle,
       ),
       const Workouts(),
-      const Text(
-        kHistoryLabel,
-        style: kNotImplementedPlaceholderTextStyle,
-      ),
+      const History(),
       const Text(
         kMeasureLabel,
         style: kNotImplementedPlaceholderTextStyle,
@@ -67,16 +54,23 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(_tabNames[_selectedIndex]),
       ),
-      body: FutureBuilder<WorkoutTemplateCollection>(
-        future: _initializeAndFetchData,
+      body: FutureBuilder<DataCapsule>(
+        future: _fetchDataCapsule,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else {
-            var workoutTemplateCollection = snapshot.data!;
+            var dataCapsule = snapshot.data!;
             return Center(
-              child: ChangeNotifierProvider.value(
-                value: workoutTemplateCollection,
+              child: MultiProvider(
+                providers: [
+                  ChangeNotifierProvider.value(
+                    value: dataCapsule.workoutTemplates,
+                  ),
+                  ChangeNotifierProvider.value(
+                    value: dataCapsule.workoutsPerformed,
+                  ),
+                ],
                 child: widgetOptions.elementAt(_selectedIndex),
               ),
             );

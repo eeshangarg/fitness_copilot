@@ -3,6 +3,7 @@ import 'package:fitness_copilot/components/workout/workout_template_details_dial
 import 'package:fitness_copilot/components/workout/workout_template_exercises_summary.dart';
 import 'package:fitness_copilot/components/workout/workout_template_popup_menu_button.dart';
 import 'package:fitness_copilot/models/workout/workout_template.dart';
+import 'package:fitness_copilot/models/workout/workouts_performed_collection.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,14 +14,21 @@ class WorkoutTemplateCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WorkoutTemplate workoutTemplate = context.watch<WorkoutTemplate>();
+    WorkoutsPerformedCollection workoutsPerformedCollection =
+        context.watch<WorkoutsPerformedCollection>();
 
     return GestureDetector(
       onTap: () {
         showDialog(
           context: context,
           builder: (BuildContext context) {
-            return ChangeNotifierProvider.value(
-              value: workoutTemplate,
+            return MultiProvider(
+              providers: [
+                ChangeNotifierProvider.value(value: workoutTemplate),
+                ChangeNotifierProvider.value(
+                  value: workoutsPerformedCollection,
+                ),
+              ],
               child: const WorkoutTemplateDetailsDialog(),
             );
           },

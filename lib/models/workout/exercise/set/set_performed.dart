@@ -31,6 +31,15 @@ class SetPerformed extends ChangeNotifier {
     notifyListeners();
   }
 
+  double oneRepMax() {
+    // Uses the Epley formula for 1-RM calculation
+    if (repsPerformed > 0) {
+      return weight * (1 + repsPerformed / 30.0);
+    }
+
+    return 0.0;
+  }
+
   factory SetPerformed.fromJson(Map<String, dynamic> json) =>
       _$SetPerformedFromJson(json);
 

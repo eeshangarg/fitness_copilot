@@ -1,6 +1,7 @@
 import 'package:fitness_copilot/components/workout/workout_last_performed_indicator.dart';
 import 'package:fitness_copilot/models/workout/exercise/exercise_template.dart';
 import 'package:fitness_copilot/models/workout/workout_template.dart';
+import 'package:fitness_copilot/models/workout/workouts_performed_collection.dart';
 import 'package:fitness_copilot/screens/workout_started.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,8 @@ class WorkoutTemplateDetailsDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WorkoutTemplate workoutTemplate = context.watch<WorkoutTemplate>();
+    WorkoutsPerformedCollection workoutsPerformedCollection =
+        context.watch<WorkoutsPerformedCollection>();
 
     return AlertDialog(
       scrollable: true,
@@ -63,8 +66,13 @@ class WorkoutTemplateDetailsDialog extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return ChangeNotifierProvider.value(
-                    value: workoutTemplate,
+                  return MultiProvider(
+                    providers: [
+                      ChangeNotifierProvider.value(value: workoutTemplate),
+                      ChangeNotifierProvider.value(
+                        value: workoutsPerformedCollection,
+                      ),
+                    ],
                     child: const WorkoutStarted(),
                   );
                 },

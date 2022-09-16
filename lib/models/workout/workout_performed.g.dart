@@ -9,7 +9,7 @@ part of 'workout_performed.dart';
 WorkoutPerformed _$WorkoutPerformedFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
-    requiredKeys: const ['name', 'creation_date'],
+    requiredKeys: const ['name', 'creation_date', 'performed_date'],
   );
   return WorkoutPerformed(
     name: json['name'] as String,
@@ -17,7 +17,9 @@ WorkoutPerformed _$WorkoutPerformedFromJson(Map<String, dynamic> json) {
             ?.map((e) => ExercisePerformed.fromJson(e as Map<String, dynamic>))
             .toList() ??
         [],
-  )..creationDate = json['creation_date'] as int?;
+  )
+    ..creationDate = json['creation_date'] as int?
+    ..performedDate = json['performed_date'] as int?;
 }
 
 Map<String, dynamic> _$WorkoutPerformedToJson(WorkoutPerformed instance) =>
@@ -25,4 +27,5 @@ Map<String, dynamic> _$WorkoutPerformedToJson(WorkoutPerformed instance) =>
       'name': instance.name,
       'exercises': instance.exercises.map((e) => e.toJson()).toList(),
       'creation_date': instance.creationDate,
+      'performed_date': instance.performedDate,
     };

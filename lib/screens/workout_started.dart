@@ -3,6 +3,7 @@ import 'package:fitness_copilot/components/workout/exercise/exercise_expansion_p
 import 'package:fitness_copilot/components/workout/workout_timer.dart';
 import 'package:fitness_copilot/models/workout/workout_performed.dart';
 import 'package:fitness_copilot/models/workout/workout_template.dart';
+import 'package:fitness_copilot/models/workout/workouts_performed_collection.dart';
 import 'package:fitness_copilot/shared/providers/timer_service.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ class WorkoutStarted extends StatelessWidget {
     WorkoutPerformed workoutPerformed = WorkoutPerformed.fromTemplate(
       workoutTemplate,
     );
+    WorkoutsPerformedCollection workoutsPerformedCollection =
+        context.watch<WorkoutsPerformedCollection>();
 
     return Scaffold(
       appBar: AppBar(
@@ -40,11 +43,11 @@ class WorkoutStarted extends StatelessWidget {
                         'Are you sure you want to finish this workout?',
                     confirmationButtonText: 'Finish',
                     onPressedConfirmation: () {
-                      workoutTemplate.setLastPerformed(
-                        workoutPerformed.creationDate!,
-                      );
+                      var lastPerformed = DateTime.now().millisecondsSinceEpoch;
+                      workoutTemplate.setLastPerformed(lastPerformed);
                       workoutTemplate.update();
-                      workoutPerformed.add();
+                      workoutPerformed.performedDate = lastPerformed;
+                      workoutsPerformedCollection.add(workoutPerformed);
                       TimerService timerService = TimerService.of(context);
                       timerService.stop();
                       timerService.reset();
