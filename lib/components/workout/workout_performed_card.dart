@@ -1,3 +1,4 @@
+import 'package:fitness_copilot/components/workout/workout_performed_popup_menu_button.dart';
 import 'package:fitness_copilot/models/workout/workout_performed.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
@@ -87,9 +88,9 @@ class WorkoutPerformedCard extends StatelessWidget {
                   workoutPerformed.name,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
+                const WorkoutPerformedPopupMenuButton(),
               ],
             ),
-            const SizedBox(height: 12.0),
             Text(
               performedDateLabel,
               style: Theme.of(context).textTheme.bodyMedium,
