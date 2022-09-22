@@ -1,28 +1,26 @@
+import 'package:fitness_copilot/components/workout/workout_duration_and_pr_row.dart';
+import 'package:fitness_copilot/components/workout/workout_performed_details_dialog.dart';
 import 'package:fitness_copilot/components/workout/workout_performed_popup_menu_button.dart';
 import 'package:fitness_copilot/models/workout/workout_performed.dart';
 import 'package:fitness_copilot/shared/style_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class WorkoutPerformedCard extends StatelessWidget {
   const WorkoutPerformedCard({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    WorkoutPerformed workoutPerformed = context.watch<WorkoutPerformed>();
+  String _getPerformedDateLabel(WorkoutPerformed workoutPerformed) {
     DateTime performedDate = DateTime.fromMillisecondsSinceEpoch(
       workoutPerformed.performedDate!,
     );
-    DateTime creationDate = DateTime.fromMillisecondsSinceEpoch(
-      workoutPerformed.creationDate!,
-    );
-    String performedDateLabel = DateFormat.MMMMEEEEd().format(
-      performedDate,
-    );
-    Duration duration = performedDate.difference(creationDate);
+    return DateFormat.MMMMEEEEd().format(performedDate);
+  }
 
+  List<TableRow> _getTableRows(
+    BuildContext context,
+    WorkoutPerformed workoutPerformed,
+  ) {
     List<TableRow> tableRows = [
       TableRow(
         children: [
@@ -74,56 +72,52 @@ class WorkoutPerformedCard extends StatelessWidget {
       tableRows.add(tableRow);
     }
 
-    return Card(
-      child: Padding(
-        padding: kComponentPadding,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  workoutPerformed.name,
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const WorkoutPerformedPopupMenuButton(),
-              ],
-            ),
-            Text(
-              performedDateLabel,
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            const SizedBox(height: 12.0),
-            Row(
-              children: [
-                Icon(
-                  Icons.access_time_filled,
-                  size: Theme.of(context).textTheme.bodyMedium?.fontSize,
-                  color: Theme.of(context).textTheme.bodyMedium?.color,
-                ),
-                const SizedBox(width: 6.0),
-                Text(
-                  '${duration.inHours}h ${duration.inMinutes}min',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-                const SizedBox(width: 6.0),
-                Icon(
-                  FontAwesomeIcons.trophy,
-                  size: Theme.of(context).textTheme.bodyMedium?.fontSize,
-                  color: Theme.of(context).textTheme.bodyMedium?.color,
-                ),
-                const SizedBox(width: 6.0),
-                Text(
-                  '8 PRs',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                )
-              ],
-            ),
-            const SizedBox(height: 12.0),
-            Table(children: tableRows),
-          ],
+    return tableRows;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    WorkoutPerformed workoutPerformed = context.watch<WorkoutPerformed>();
+
+    return GestureDetector(
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return ChangeNotifierProvider.value(
+              value: workoutPerformed,
+              child: const WorkoutPerformedDetailsDialog(),
+            );
+          },
+        );
+      },
+      child: Card(
+        child: Padding(
+          padding: kComponentPadding,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    workoutPerformed.name,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const WorkoutPerformedPopupMenuButton(),
+                ],
+              ),
+              Text(
+                _getPerformedDateLabel(workoutPerformed),
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+              const SizedBox(height: 12.0),
+              const WorkoutDurationAndPRRow(),
+              const SizedBox(height: 12.0),
+              Table(children: _getTableRows(context, workoutPerformed)),
+            ],
+          ),
         ),
       ),
     );
