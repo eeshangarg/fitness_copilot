@@ -101,10 +101,12 @@ class WorkoutPerformedDetailsDialog extends StatelessWidget {
         ],
       ),
       contentPadding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
-      content: SingleChildScrollView(
-        child: Table(
-          columnWidths: const {0: FlexColumnWidth(8), 1: FlexColumnWidth(2)},
-          children: _getTableRows(context, workoutPerformed),
+      content: Scrollbar(
+        child: SingleChildScrollView(
+          child: Table(
+            columnWidths: const {0: FlexColumnWidth(8), 1: FlexColumnWidth(2)},
+            children: _getTableRows(context, workoutPerformed),
+          ),
         ),
       ),
       actions: [
