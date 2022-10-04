@@ -13,46 +13,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final Future<DataCapsule> _fetchDataCapsule =
-      DataCapsule.fromFirestore();
-
   static const String kDashboardLabel = 'Dashboard';
   static const String kWorkoutsLabel = 'Workouts';
   static const String kHistoryLabel = 'History';
   static const String kMeasureLabel = 'Measure';
 
-  int _selectedIndex = 0;
-  final List<String> _tabNames = [
-    kDashboardLabel,
-    kWorkoutsLabel,
-    kHistoryLabel,
-    kMeasureLabel,
-  ];
+  late final Future<DataCapsule> _fetchDataCapsule =
+      DataCapsule.fromFirestore();
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> widgetOptions = <Widget>[
-      const Text(
-        kDashboardLabel,
-        style: kNotImplementedPlaceholderTextStyle,
-      ),
-      const Workouts(),
-      const History(),
-      const Text(
-        kMeasureLabel,
-        style: kNotImplementedPlaceholderTextStyle,
-      ),
-    ];
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(_tabNames[_selectedIndex]),
+        title: Text(
+          [
+            kDashboardLabel,
+            kWorkoutsLabel,
+            kHistoryLabel,
+            kMeasureLabel,
+          ][_selectedIndex],
+        ),
       ),
       body: FutureBuilder<DataCapsule>(
         future: _fetchDataCapsule,
@@ -71,30 +53,44 @@ class _HomePageState extends State<HomePage> {
                     value: dataCapsule.workoutsPerformed,
                   ),
                 ],
-                child: widgetOptions.elementAt(_selectedIndex),
+                child: [
+                  const Text(
+                    kDashboardLabel,
+                    style: kNotImplementedPlaceholderTextStyle,
+                  ),
+                  const Workouts(),
+                  const History(),
+                  const Text(
+                    kMeasureLabel,
+                    style: kNotImplementedPlaceholderTextStyle,
+                  ),
+                ][_selectedIndex],
               ),
             );
           }
         },
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        items: const [
-          BottomNavigationBarItem(
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: (int index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        destinations: const [
+          NavigationDestination(
             icon: Icon(Icons.dashboard_rounded),
             label: kDashboardLabel,
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.fitness_center_rounded),
             label: kWorkoutsLabel,
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.history_rounded),
             label: kHistoryLabel,
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.straighten_rounded),
             label: kMeasureLabel,
           ),
