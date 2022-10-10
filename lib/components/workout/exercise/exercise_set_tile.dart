@@ -45,7 +45,7 @@ class ExerciseSetTile extends StatelessWidget {
         children: [
           RichText(
             text: TextSpan(
-              text: '${setTemplate.weight} ',
+              text: '${setPerformed.weight} ',
               style: titleMedium,
               children: [
                 TextSpan(
