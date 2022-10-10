@@ -67,7 +67,7 @@ class WorkoutPerformedDetailsDialog extends StatelessWidget {
               alignment: Alignment.centerRight,
               padding: const EdgeInsets.fromLTRB(0.0, 0.0, 12.0, 6.0),
               child: Text(
-                '${set.oneRepMax()}',
+                set.oneRepMax().toStringAsFixed(2),
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
